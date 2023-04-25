@@ -7,7 +7,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import Error from "./Error";
+import Error from "./404";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
@@ -21,7 +21,10 @@ const queryClient = new QueryClient({
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />} errorElement={<Error />} />
+    <Route path="/">
+      <Route index element={<App />} />
+      <Route path="*" element={<Error />} />
+    </Route>
   )
 );
 
