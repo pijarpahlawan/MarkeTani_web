@@ -1,6 +1,16 @@
-import { navBar, navList, hamburger } from "../../assets/css/Home.module.css";
+import { useState, useRef } from "react";
+import {
+  navBar,
+  navBrand,
+  navList,
+  hamburger,
+  inactive,
+} from "../../assets/css/Home.module.css";
 
 function Home() {
+  const [isNavListActive, setIsNavListActive] = useState(false);
+  const hamburgerHandler = useRef(null);
+
   const navLinks = [
     { title: "Home", path: "/" },
     { title: "About", path: "/about" },
@@ -14,18 +24,27 @@ function Home() {
     );
   });
 
+  const navToggle = (isNavListActive) => {
+    const thisElement = hamburgerHandler.current;
+    setIsNavListActive(!isNavListActive);
+    thisElement.classList.toggle(inactive);
+  };
+
   return (
     <>
       <nav className={navBar}>
-        <div className="navBrand">
+        <div className={navBrand}>
           <a href="#">
             <h1>
               <span>M</span>arke<span>T</span>ani
             </h1>
           </a>
         </div>
-        <div className={navList}>
-          <span className={hamburger}>
+        <div ref={hamburgerHandler} className={`${navList} ${inactive}`}>
+          <span
+            onClick={() => navToggle(isNavListActive)}
+            className={hamburger}
+          >
             <span></span>
           </span>
           <ul>{navLinks}</ul>
