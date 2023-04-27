@@ -5,6 +5,7 @@ import {
   navList,
   hamburger,
   inactive,
+  hero,
 } from "../../assets/css/Home.module.css";
 
 function Home() {
@@ -48,9 +49,27 @@ function Home() {
             <span></span>
           </span>
           <ul>{navLinks}</ul>
-          <a href="#">login</a>
+          <a href="#" type="button">
+            login
+          </a>
         </div>
       </nav>
+      <section className={hero}>
+        <div>
+          <h1>
+            Memajukan Agricultural<span></span>
+          </h1>
+          <h1>
+            Bersama<span></span>
+          </h1>
+          <h1>
+            MarkeTani<span></span>
+          </h1>
+          <a href="#projects" type="button">
+            Bergabung
+          </a>
+        </div>
+      </section>
     </>
   );
 }
