@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   navBar,
   navBrand,
@@ -6,34 +6,57 @@ import {
   hamburger,
   inactive,
   hero,
+  about,
 } from "../../assets/css/Home.module.css";
 
 function Home() {
   const [isNavListActive, setIsNavListActive] = useState(false);
-  const hamburgerHandler = useRef(null);
+  const [distanceScroll, setDistanceScroll] = useState(0); // [px]
+  const navListElm = useRef(null);
+  const navbarElm = useRef(null);
+  const basedSection = useRef(null);
 
   const navLinks = [
-    { title: "Home", path: "/" },
-    { title: "About", path: "/about" },
+    { title: "Home", path: "" },
+    { title: "About", path: "about" },
     { title: "Projects", path: "/projects" },
     { title: "Contact", path: "/contact" },
   ].map((link) => {
     return (
-      <li key={link.title}>
-        <a href={link.path}>{link.title}</a>
+      <li onClick={() => navToggle(isNavListActive)} key={link.title}>
+        <a href={`#${link.path}`}>{link.title}</a>
       </li>
     );
   });
 
   const navToggle = (isNavListActive) => {
-    const thisElement = hamburgerHandler.current;
+    const thisElement = navListElm.current;
     setIsNavListActive(!isNavListActive);
     thisElement.classList.toggle(inactive);
+    console.log(window.location.hash);
   };
+
+  useEffect(() => {
+    const scrolled = () => {
+      const target = navbarElm.current;
+      const distance = basedSection.current.getBoundingClientRect().top;
+      setDistanceScroll(distance);
+      console.log(distanceScroll);
+      if (distanceScroll <= 20) {
+        target.style.backgroundColor = "#1f1f1fe6";
+      } else {
+        target.style.backgroundColor = "transparent";
+      }
+    };
+    window.addEventListener("scroll", scrolled);
+    return () => {
+      window.removeEventListener("scroll", scrolled);
+    };
+  }, [distanceScroll]);
 
   return (
     <>
-      <nav className={navBar}>
+      <nav ref={navbarElm} className={navBar}>
         <div className={navBrand}>
           <a href="#">
             <h1>
@@ -41,7 +64,7 @@ function Home() {
             </h1>
           </a>
         </div>
-        <div ref={hamburgerHandler} className={`${navList} ${inactive}`}>
+        <div ref={navListElm} className={`${navList} ${inactive}`}>
           <span
             onClick={() => navToggle(isNavListActive)}
             className={hamburger}
@@ -57,7 +80,7 @@ function Home() {
       <section className={hero}>
         <div>
           <h1>
-            Memajukan Agricultural<span></span>
+            Memajukan Agrikultural<span></span>
           </h1>
           <h1>
             Bersama<span></span>
@@ -66,9 +89,21 @@ function Home() {
             MarkeTani<span></span>
           </h1>
           <a href="#projects" type="button">
-            Bergabung
+            Bergabung<span></span>
           </a>
         </div>
+      </section>
+      <section id="about" ref={basedSection} className={about}>
+        <h1>
+          mengenal <span>marketani</span>
+        </h1>
+        <p>
+          Marketani adalah website untuk petani menjual hasil panen dan produk
+          peternakan mereka langsung ke konsumen. Konsumen bisa beli produk
+          segar seperti sayuran dan buah-buahan langsung dari petani dalam satu
+          transaksi. Marketani membantu mendukung petani lokal dan memberikan
+          makanan yang sehat dan segar.
+        </p>
       </section>
     </>
   );

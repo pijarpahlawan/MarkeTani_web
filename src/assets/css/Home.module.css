@@ -1,17 +1,18 @@
-body {
-  margin: 0;
-  padding: 0;
+:root {
+  --white-color-rgb: 241, 241, 241;
+  --black-color-rgb: 31, 31, 31;
+  --green-color-rgb: 19, 220, 97;
+  --dark-green-color-rgb: 59, 123, 77;
 }
-
 /** START HEADER **/
 .navBar {
   display: flex;
-  position: relative;
+  position: fixed;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  background-color: #1f1f1f4d;
+  transition: all 0.3s ease;
+  width: 100%;
   height: 80px;
   z-index: 1;
 }
@@ -27,17 +28,17 @@ body {
   margin: 0;
   font-size: 2rem;
   font-weight: bold;
-  color: #f8f1e9;
+  color: rgb(var(--white-color-rgb));
 }
 .navBar .navBrand a h1 span {
-  color: #14dc61;
+  color: rgb(var(--green-color-rgb));
 }
 .navBar .navList {
   display: flex;
   flex-direction: column;
   border-radius: 0px 0px 0px 10px;
   transition: 0.5s ease;
-  background-color: #1f1f1fae;
+  background-color: rgba(var(--black-color-rgb), 0.8);
   padding: 20px;
   width: fit-content;
   height: fit-content;
@@ -47,19 +48,20 @@ body {
   align-items: center;
   align-self: self-end;
   justify-content: center;
-  border: 3px solid #14dc61;
+  background-color: rgba(var(--dark-green-color-rgb), 0.3);
+  border: 3px solid rgb(var(--green-color-rgb));
   border-radius: 30%;
   cursor: pointer;
-  height: 2rem;
   width: 2rem;
+  height: 2rem;
 }
 .navBar .navList .hamburger span,
 .navBar .navList .hamburger span::before,
 .navBar .navList .hamburger span::after {
   position: relative;
-  background-color: #14dc61;
-  height: 2px;
+  background-color: rgb(var(--green-color-rgb));
   width: 20px;
+  height: 2px;
   content: "";
 }
 .navBar .navList .hamburger span::before {
@@ -78,42 +80,40 @@ body {
   align-items: center;
   justify-content: center;
   padding: 0;
-  overflow-x: hidden;
   list-style: none;
 }
 .navBar .navList ul a {
   display: block;
   transition: 0.3s color ease;
-  padding: 20px 50px;
+  padding: 18px 36px;
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0.2rem;
-  color: #f8f1e9;
-  font-size: 1rem;
+  color: rgb(var(--white-color-rgb));
+  font-size: 0.9rem;
 }
 .navBar .navList ul li:hover a {
-  color: #14dc61;
+  color: rgb(var(--green-color-rgb));
 }
 .navBar .navList > a {
   display: block;
   align-self: center;
-  transition: 0.3s background-color, 0.3s color ease;
+  transition: all 0.3s ease;
   border-radius: 10px;
-  background-color: #307b4d;
+  background-color: rgb(var(--dark-green-color-rgb));
   margin: 10px;
   padding: 10px 20px;
   height: fit-content;
-  overflow-x: hidden;
   text-align: center;
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0.1rem;
-  color: #f8f1e9;
-  font-size: 1.2rem;
+  color: rgb(var(--white-color-rgb));
+  font-size: 1rem;
 }
 .navBar .navList > a:hover {
-  background-color: #14dc61;
-  color: #1f1f1f;
+  background-color: rgb(var(--green-color-rgb));
+  color: rgb(var(--black-color-rgb));
 }
 /** END HEADER **/
 
@@ -126,16 +126,15 @@ body {
   justify-content: center;
   background-image: url("../images/tani.jpg");
   background-size: cover;
-  margin-top: -80px;
-  height: 100vh;
-  width: 100vw;
+  width: 100%;
+  height: calc(100vh + 5px);
 }
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.4;
-  background-color: black;
+  opacity: 0.7;
+  background-color: rgb(var(--black-color-rgb));
   width: 100%;
   height: 100%;
 }
@@ -144,8 +143,8 @@ body {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding-left: 5rem;
-  color: #f8f1e9;
+  padding: 0 6rem;
+  color: rgb(var(--white-color-rgb));
 }
 .hero div h1 {
   display: block;
@@ -153,9 +152,9 @@ body {
   width: fit-content;
   animation: text_reveal 0.5s ease forwards;
   animation-delay: 1s;
-  margin: 20px 0;
+  margin: 5px 0;
   color: transparent;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 .hero div h1:nth-child(1) {
   animation-delay: 1s;
@@ -167,15 +166,14 @@ body {
   animation: text_reveal_name 0.5s ease forwards;
   animation-delay: 3s;
 }
-.hero div h1 span {
+.hero div span {
   position: absolute;
   inset: 0;
-  background-color: #14dc61;
+  background-color: rgb(var(--green-color-rgb));
   border-radius: 8px;
   width: 0;
   height: 100%;
   animation: text_reveal_box 1s ease;
-  animation-delay: 0.5s;
 }
 .hero div h1:nth-child(1) span {
   animation-delay: 0.5s;
@@ -188,30 +186,29 @@ body {
 }
 .hero div a {
   position: relative;
-  background-color: #1f1f1fae;
-  border: 2px solid #14dc61;
   border-radius: 10px;
-  transition: 0.3s ease;
-  transition-property: background-color, color;
+  background-color: rgba(var(--dark-green-color-rgb), 0.3);
+  border: 2px solid rgb(var(--green-color-rgb));
+  color: rgb(var(--white-color-rgb));
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0.1rem;
-  margin-top: 45px;
-  padding: 15px;
-  color: #f8f1e9;
+  margin-top: 30px;
+  padding: 10px;
   font-size: 1.5rem;
 }
 .hero div a:hover {
-  background-color: #14dc61;
+  background-color: rgb(var(--green-color-rgb));
+  color: rgb(var(--black-color-rgb));
 }
 @keyframes text_reveal {
   100% {
-    color: #f8f1e9;
+    color: rgb(var(--white-color-rgb));
   }
 }
 @keyframes text_reveal_name {
   100% {
-    color: #14dc61;
+    color: rgb(var(--green-color-rgb));
     font-weight: bold;
   }
 }
@@ -227,8 +224,39 @@ body {
 }
 /** END HERO SECTION **/
 
+/** START ABOUT SECTION **/
+.about {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(var(--white-color-rgb));
+  padding: 3rem 0;
+  width: 100%;
+}
+.about h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(var(--black-color-rgb));
+}
+.about h1 span {
+  color: rgb(var(--green-color-rgb));
+}
+.about p {
+  letter-spacing: 0.1rem;
+  margin: 0 8rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgb(var(--black-color-rgb));
+}
+/** END ABOUT SECTION **/
+
 /** MEDIA QUERIES **/
-@media all and (max-width: 1024px) {
+@media all and (max-width: 1023px) {
   .navBar .navList.inactive {
     background-color: transparent;
   }
@@ -245,7 +273,6 @@ body {
 }
 @media all and (min-width: 1024px) {
   .navBar {
-    align-items: center;
     height: fit-content;
   }
   .navBar .navBrand a h1 {
@@ -263,12 +290,12 @@ body {
     flex-direction: row;
   }
   .navBar .navList ul a {
-    padding: 10px 20px;
+    padding: 0.8rem 1.5rem;
   }
   .hero div h1 {
-    font-size: 5rem;
+    font-size: 3.7rem;
   }
   .hero div a {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
