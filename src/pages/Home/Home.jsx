@@ -7,7 +7,10 @@ import {
   inactive,
   hero,
   about,
+  contact,
+  contactList,
 } from "../../assets/css/Home.module.css";
+import { address, email, phone } from "./image";
 
 function Home() {
   const [isNavListActive, setIsNavListActive] = useState(false);
@@ -19,8 +22,8 @@ function Home() {
   const navLinks = [
     { title: "Home", path: "" },
     { title: "About", path: "about" },
-    { title: "Projects", path: "/projects" },
-    { title: "Contact", path: "/contact" },
+    { title: "Products", path: "products" },
+    { title: "Contact", path: "contact" },
   ].map((link) => {
     return (
       <li onClick={() => navToggle(isNavListActive)} key={link.title}>
@@ -104,6 +107,27 @@ function Home() {
           transaksi. Marketani membantu mendukung petani lokal dan memberikan
           makanan yang sehat dan segar.
         </p>
+      </section>
+      <section id="products"></section>
+      <section id="contact" className={contact}>
+        <h1>Contact Info</h1>
+        <div className={contactList}>
+          <div>
+            <img src={phone} alt="phone" />
+            <h1>Phone</h1>
+            <h2>+62 881-287-9626</h2>
+          </div>
+          <div>
+            <img src={email} alt="email" />
+            <h1>Email</h1>
+            <h2>MarkeTani@gmail.com</h2>
+          </div>
+          <div>
+            <img src={address} alt="address" />
+            <h1>Address</h1>
+            <h2>Batang, Jawa Tengah</h2>
+          </div>
+        </div>
       </section>
     </>
   );
