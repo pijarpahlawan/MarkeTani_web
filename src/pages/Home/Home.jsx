@@ -1,20 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import {
-  navBar,
-  navBrand,
-  navList,
-  hamburger,
-  inactive,
-  hero,
-  about,
-  contact,
-  contactList,
-  products,
-  allProducts,
-  productInfo,
-  productImg,
-} from "../../assets/css/Home.module.css";
-import { address, email, phone, vegetable, seed, snack } from "./image";
+import style from "../../assets/css/Home.module.css";
+import img from "../../assets/js/home-image";
 
 function Home() {
   const [isNavListActive, setIsNavListActive] = useState(false);
@@ -39,9 +25,83 @@ function Home() {
   const navToggle = (isNavListActive) => {
     const thisElement = navListElm.current;
     setIsNavListActive(!isNavListActive);
-    thisElement.classList.toggle(inactive);
+    thisElement.classList.toggle(style.inactive);
     console.log(window.location.hash);
   };
+
+  const products = [
+    {
+      title: "Sayuran dan Buah",
+      description:
+        "sebagai marketplace online yang berjalan di bidang pertanian, \
+        kami menyediakan berbagai jenis sayur segar dan buah-buahan yang \
+        bersumber langsung dari petani lokal di Indonesia. konsumen dapat \
+        memilih beragam jenis sayur seperti bayam, wortel dan bawang putih. \
+        atau memilih buah-buahan seperti mangga dan jambu biji.",
+      img: img.vegetable,
+      alt: "vegetable",
+    },
+    {
+      title: "Barang Pertanian",
+      description:
+        "marketani juga menyediakan berbagai jenis barang yang dibutuhkan \
+        oleh petani untuk keperluan pertanian mereka, seperti pupuk, benih, \
+        pestisida, dan peralatan pertanian. dengan menyediakan berbagai barang \
+        yang dibutuhkan petani, kami dapat membantu para petani meningkatkan \
+        hasil panen dan kualitas tanaman mereka.",
+      img: img.seed,
+      alt: "seed",
+    },
+    {
+      title: "Olahan Hasil Tani",
+      description:
+        "selain bahan mentah, kami juga menyediakan olahan hasil tani \
+        antara lain seperti sambal, keripik, kue, dan minuman khas. \
+        konsumen dapat memilih beragam jenis produk jadi olahan yang \
+        diinginkan dan melakukan pembelian dengan mudah melalui platform \
+        online Marketani.",
+      img: img.snack,
+      alt: "snack",
+    },
+  ].map((product) => {
+    return (
+      <div key={product.alt}>
+        <div className={style.productInfo}>
+          <h1>{product.title}</h1>
+          <p>{product.description}</p>
+        </div>
+        <div className={style.productImg}>
+          <img src={product.img} alt={product.alt} />
+        </div>
+      </div>
+    );
+  });
+
+  const contactInfo = [
+    {
+      img: img.phone,
+      title: "Telepon",
+      description: "+62 812-345-678-90",
+    },
+    {
+      img: img.email,
+      title: "Email",
+      description: "MarkeTani@gmail.com",
+    },
+    {
+      img: img.address,
+      title: "Alamat",
+      description: "Batang, Jawa Tengah",
+    },
+  ].map((contact) => {
+    return (
+      <div key={contact.title}>
+        <img src={contact.img} alt="phone" />
+        <h1>{contact.title}</h1>
+        <h2>{contact.description}</h2>
+      </div>
+    );
+  });
 
   useEffect(() => {
     const scrolled = () => {
@@ -63,18 +123,18 @@ function Home() {
 
   return (
     <>
-      <nav ref={navbarElm} className={navBar}>
-        <div className={navBrand}>
+      <nav ref={navbarElm} className={style.navBar}>
+        <div className={style.navBrand}>
           <a href="#">
             <h1>
               <span>M</span>arke<span>T</span>ani
             </h1>
           </a>
         </div>
-        <div ref={navListElm} className={`${navList} ${inactive}`}>
+        <div ref={navListElm} className={`${style.navList} ${style.inactive}`}>
           <span
             onClick={() => navToggle(isNavListActive)}
-            className={hamburger}
+            className={style.hamburger}
           >
             <span></span>
           </span>
@@ -84,7 +144,7 @@ function Home() {
           </a>
         </div>
       </nav>
-      <section className={hero}>
+      <section className={style.hero}>
         <div>
           <h1>
             Memajukan Agrikultural<span></span>
@@ -100,7 +160,7 @@ function Home() {
           </a>
         </div>
       </section>
-      <section id="about" ref={basedSection} className={about}>
+      <section id="about" ref={basedSection} className={style.about}>
         <h1>
           mengenal <span>marketani</span>
         </h1>
@@ -112,76 +172,13 @@ function Home() {
           makanan yang sehat dan segar.
         </p>
       </section>
-      <section id="products" className={products}>
+      <section id="products" className={style.products}>
         <h1>produk kami</h1>
-        <div className={allProducts}>
-          <div>
-            <div className={productInfo}>
-              <h1>sayuran dan buah</h1>
-              <p>
-                sebagai marketplace online yang berjalan di bidang pertanian,
-                kami menyediakan berbagai jenis sayur segar dan buah-buahan yang
-                bersumber langsung dari petani lokal di Indonesia. konsumen
-                dapat memilih beragam jenis sayur seperti bayam, wortel dan
-                bawang putih. atau memilih buah-buahan seperti mangga dan jambu
-                biji.
-              </p>
-            </div>
-            <div className={productImg}>
-              <img src={vegetable} alt="vegetable" />
-            </div>
-          </div>
-          <div>
-            <div className={productInfo}>
-              <h1>barang pertanian</h1>
-              <p>
-                marketani juga menyediakan berbagai jenis barang yang dibutuhkan
-                oleh petani untuk keperluan pertanian mereka, seperti pupuk,
-                benih, pestisida, dan peralatan pertanian. dengan menyediakan
-                berbagai barang yang dibutuhkan petani, kami dapat membantu para
-                petani meningkatkan hasil panen dan kualitas tanaman mereka.
-              </p>
-            </div>
-            <div className={productImg}>
-              <img src={seed} alt="seed" />
-            </div>
-          </div>
-          <div>
-            <div className={productInfo}>
-              <h1>olahan hasil tani</h1>
-              <p>
-                Selain bahan mentah, kami juga menyediakan olahan hasil tani
-                antara lain seperti sambal, keripik, kue, dan minuman khas.
-                Konsumen dapat memilih beragam jenis produk jadi olahan yang
-                diinginkan dan melakukan pembelian dengan mudah melalui platform
-                online Marketani.
-              </p>
-            </div>
-            <div className={productImg}>
-              <img src={snack} alt="snack" />
-            </div>
-          </div>
-        </div>
+        <div className={style.allProducts}>{products}</div>
       </section>
-      <section id="contact" className={contact}>
+      <section id="contact" className={style.contact}>
         <h1>Contact Info</h1>
-        <div className={contactList}>
-          <div>
-            <img src={phone} alt="phone" />
-            <h1>Phone</h1>
-            <h2>+62 881-287-9626</h2>
-          </div>
-          <div>
-            <img src={email} alt="email" />
-            <h1>Email</h1>
-            <h2>MarkeTani@gmail.com</h2>
-          </div>
-          <div>
-            <img src={address} alt="address" />
-            <h1>Address</h1>
-            <h2>Batang, Jawa Tengah</h2>
-          </div>
-        </div>
+        <div className={style.contactList}>{contactInfo}</div>
       </section>
     </>
   );
