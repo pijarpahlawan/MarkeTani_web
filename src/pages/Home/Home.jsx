@@ -10,10 +10,10 @@ function Home() {
   const basedSection = useRef(null);
 
   const navLinks = [
-    { title: "Home", path: "" },
-    { title: "About", path: "about" },
-    { title: "Products", path: "products" },
-    { title: "Contact", path: "contact" },
+    { title: "Beranda", path: "" },
+    { title: "Tentang", path: "about" },
+    { title: "Produk", path: "products" },
+    { title: "Kontak", path: "contact" },
   ].map((link) => {
     return (
       <li onClick={() => navToggle(isNavListActive)} key={link.title}>
@@ -31,47 +31,47 @@ function Home() {
 
   const products = [
     {
+      id: "vegetable",
       title: "Sayuran dan Buah",
       description:
-        "sebagai marketplace online yang berjalan di bidang pertanian, \
+        "Sebagai marketplace online yang berjalan di bidang pertanian, \
         kami menyediakan berbagai jenis sayur segar dan buah-buahan yang \
-        bersumber langsung dari petani lokal di Indonesia. konsumen dapat \
+        bersumber langsung dari petani lokal di Indonesia. Konsumen dapat \
         memilih beragam jenis sayur seperti bayam, wortel dan bawang putih. \
-        atau memilih buah-buahan seperti mangga dan jambu biji.",
+        Atau memilih buah-buahan seperti mangga dan jambu biji.",
       img: img.vegetable,
-      alt: "vegetable",
     },
     {
+      id: "seed",
       title: "Barang Pertanian",
       description:
-        "marketani juga menyediakan berbagai jenis barang yang dibutuhkan \
+        "Marketani juga menyediakan berbagai jenis barang yang dibutuhkan \
         oleh petani untuk keperluan pertanian mereka, seperti pupuk, benih, \
-        pestisida, dan peralatan pertanian. dengan menyediakan berbagai barang \
+        pestisida, dan peralatan pertanian. Dengan menyediakan berbagai barang \
         yang dibutuhkan petani, kami dapat membantu para petani meningkatkan \
         hasil panen dan kualitas tanaman mereka.",
       img: img.seed,
-      alt: "seed",
     },
     {
+      id: "snack",
       title: "Olahan Hasil Tani",
       description:
-        "selain bahan mentah, kami juga menyediakan olahan hasil tani \
+        "Selain bahan mentah, kami juga menyediakan olahan hasil tani \
         antara lain seperti sambal, keripik, kue, dan minuman khas. \
-        konsumen dapat memilih beragam jenis produk jadi olahan yang \
+        Konsumen dapat memilih beragam jenis produk jadi olahan yang \
         diinginkan dan melakukan pembelian dengan mudah melalui platform \
         online Marketani.",
       img: img.snack,
-      alt: "snack",
     },
   ].map((product) => {
     return (
-      <div key={product.alt}>
+      <div key={product.id}>
         <div className={style.productInfo}>
           <h1>{product.title}</h1>
           <p>{product.description}</p>
         </div>
         <div className={style.productImg}>
-          <img src={product.img} alt={product.alt} />
+          <img src={product.img} alt={product.id} />
         </div>
       </div>
     );
@@ -96,9 +96,40 @@ function Home() {
   ].map((contact) => {
     return (
       <div key={contact.title}>
-        <img src={contact.img} alt="phone" />
+        <img src={contact.img} alt={contact.title} />
         <h1>{contact.title}</h1>
         <h2>{contact.description}</h2>
+      </div>
+    );
+  });
+
+  const socialMedia = [
+    {
+      id: "facebook",
+      target: "https://web.facebook.com/?_rdc=1&_rdr",
+      icon: img.facebook,
+    },
+    {
+      id: "instagram",
+      target: "https://www.instagram.com/?hl=en",
+      icon: img.instagram,
+    },
+    {
+      id: "twitter",
+      target: "https://twitter.com/i/flow/login",
+      icon: img.twitter,
+    },
+    {
+      id: "telegram",
+      target: "https://web.telegram.org/k/",
+      icon: img.telegram,
+    },
+  ].map((social) => {
+    return (
+      <div key={social.id}>
+        <a href={social.target}>
+          <img src={social.icon} alt={social.id} />
+        </a>
       </div>
     );
   });
@@ -124,7 +155,7 @@ function Home() {
   return (
     <>
       <nav ref={navbarElm} className={style.navBar}>
-        <div className={style.navBrand}>
+        <div className={style.brand}>
           <a href="#">
             <h1>
               <span>M</span>arke<span>T</span>ani
@@ -177,8 +208,17 @@ function Home() {
         <div className={style.allProducts}>{products}</div>
       </section>
       <section id="contact" className={style.contact}>
-        <h1>Contact Info</h1>
+        <h1>info kontak</h1>
         <div className={style.contactList}>{contactInfo}</div>
+      </section>
+      <section className={style.footer}>
+        <div className={style.brand}>
+          <h1>
+            <span>M</span>arke<span>T</span>ani
+          </h1>
+        </div>
+        <h2>Ikuti Kami</h2>
+        <div>{socialMedia}</div>
       </section>
     </>
   );
