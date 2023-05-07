@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react";
-import style from "../../assets/css/Home.module.css";
-import img from "../../assets/js/home-image";
+import style from "../assets/css/Intro.module.css";
+import img from "../assets/js/intro-image";
+import Logo from "../components/Logo";
 
-function Home() {
-  const [isNavListActive, setIsNavListActive] = useState(false);
+function Intro() {
   const [distanceScroll, setDistanceScroll] = useState(0); // [px]
   const navListElm = useRef(null);
   const navbarElm = useRef(null);
@@ -16,17 +16,15 @@ function Home() {
     { title: "Kontak", path: "contact" },
   ].map((link) => {
     return (
-      <li onClick={() => navToggle(isNavListActive)} key={link.title}>
+      <li onClick={() => navToggle()} key={link.title}>
         <a href={`#${link.path}`}>{link.title}</a>
       </li>
     );
   });
 
-  const navToggle = (isNavListActive) => {
+  const navToggle = () => {
     const thisElement = navListElm.current;
-    setIsNavListActive(!isNavListActive);
     thisElement.classList.toggle(style.inactive);
-    console.log(window.location.hash);
   };
 
   const products = [
@@ -139,13 +137,13 @@ function Home() {
       const target = navbarElm.current;
       const distance = basedSection.current.getBoundingClientRect().top;
       setDistanceScroll(distance);
-      console.log(distanceScroll);
       if (distanceScroll <= 20) {
         target.style.backgroundColor = "#1f1f1fe6";
       } else {
         target.style.backgroundColor = "transparent";
       }
     };
+
     window.addEventListener("scroll", scrolled);
     return () => {
       window.removeEventListener("scroll", scrolled);
@@ -155,18 +153,9 @@ function Home() {
   return (
     <>
       <nav ref={navbarElm} className={style.navBar}>
-        <div className={style.brand}>
-          <a href="#">
-            <h1>
-              <span>M</span>arke<span>T</span>ani
-            </h1>
-          </a>
-        </div>
+        <Logo href="#" />
         <div ref={navListElm} className={`${style.navList} ${style.inactive}`}>
-          <span
-            onClick={() => navToggle(isNavListActive)}
-            className={style.hamburger}
-          >
+          <span onClick={() => navToggle()} className={style.hamburger}>
             <span></span>
           </span>
           <ul>{navLinks}</ul>
@@ -212,11 +201,7 @@ function Home() {
         <div className={style.contactList}>{contactInfo}</div>
       </section>
       <section className={style.footer}>
-        <div className={style.brand}>
-          <h1>
-            <span>M</span>arke<span>T</span>ani
-          </h1>
-        </div>
+        <Logo href="#" />
         <h2>Ikuti Kami</h2>
         <div>{socialMedia}</div>
       </section>
@@ -224,4 +209,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Intro;
