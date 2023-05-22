@@ -1,0 +1,16 @@
+.brand {
+  align-self: center;
+  justify-self: center;
+  margin: 0 2rem;
+}
+.brand a {
+  text-decoration: none;
+}
+.brand h1 {
+  color: rgb(var(--white-color-rgb));
+  margin: 0;
+  font-weight: bold;
+}
+.brand h1 span {
+  color: rgb(var(--green-color-rgb));
+}
