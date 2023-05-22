@@ -1,6 +1,6 @@
-import { error, container } from "./assets/css/404.module.css";
+import { error, container } from "../assets/css/404.module.css";
 
-function Error() {
+export default function Error() {
   return (
     <section className={error}>
       <div className={container}>
@@ -11,5 +11,3 @@ function Error() {
     </section>
   );
 }
-
-export default Error;

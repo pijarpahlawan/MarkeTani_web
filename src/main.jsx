@@ -7,12 +7,13 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Error from "./404";
+import "./assets/css/main.css";
 import App, { loader as appLoader } from "./App";
-
-// environtment variables
-// const serverHostname = import.meta.env.VITE_HOSTNAME || "localhost";
-// const serverPort = import.meta.env.VITE_PORT || 8000;
+import Error from "./pages/404";
+import Intro from "./pages/Intro";
+import Authentication from "./layouts/Authentication";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,11 +25,18 @@ const queryClient = new QueryClient({
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" loader={appLoader} element={<App />}>
-      <Route index element={<h1>Hallo</h1>} />
-      <Route path="/coba" element={<h1>Coba</h1>} />
-      <Route path="*" element={<Error />} />
-    </Route>
+    <>
+      <Route path="/" loader={appLoader} element={<App />}>
+        <Route index element={<h1>Hallo</h1>} />
+        <Route path="coba" element={<h1>Coba</h1>} />
+        <Route path="*" element={<Error />} />
+      </Route>
+      <Route path="/intro" element={<Intro />} />
+      <Route element={<Authentication />}>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+      </Route>
+    </>
   )
 );
 

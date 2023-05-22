@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import style from "../assets/css/Intro.module.css";
 import img from "../assets/js/intro-image";
-import Logo from "../components/Logo";
+import Brand from "../components/Brand";
 
-function Intro() {
+export default function Intro() {
   const [distanceScroll, setDistanceScroll] = useState(0); // [px]
   const navListElm = useRef(null);
   const navbarElm = useRef(null);
@@ -153,7 +153,7 @@ function Intro() {
   return (
     <>
       <nav ref={navbarElm} className={style.navBar}>
-        <Logo href="#" />
+        <Brand href="#" />
         <div ref={navListElm} className={`${style.navList} ${style.inactive}`}>
           <span onClick={() => navToggle()} className={style.hamburger}>
             <span></span>
@@ -201,12 +201,10 @@ function Intro() {
         <div className={style.contactList}>{contactInfo}</div>
       </section>
       <section className={style.footer}>
-        <Logo href="#" />
+        <Brand href="#" />
         <h2>Ikuti Kami</h2>
         <div>{socialMedia}</div>
       </section>
     </>
   );
 }
-
-export default Intro;

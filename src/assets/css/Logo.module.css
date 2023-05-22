@@ -1,19 +1,11 @@
-:root {
-  --white-color-rgb: 241, 241, 241;
-}
-.brand {
-  align-self: center;
-  justify-self: center;
-  margin: 0 2rem;
-}
-.brand a {
-  text-decoration: none;
-}
-.brand h1 {
-  margin: 0;
-  font-weight: bold;
-  color: rgb(var(--white-color-rgb));
-}
-.brand h1 span {
-  color: rgb(var(--green-color-rgb));
+.logo {
+  fill-opacity: 0;
+  stroke: rgb(var(--green-color-rgb));
+  stroke-width: 10px;
+  stroke-dasharray: 4500;
+  /* animation: draw 8s ease;
+  animation-iteration-count: infinite; */
+  transform: perspective(300px) rotateX(30deg);
+  width: 10rem;
+  height: 10rem;
 }
