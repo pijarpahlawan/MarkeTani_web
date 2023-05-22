@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import style from "../assets/css/Intro.module.css";
 import img from "../assets/js/intro-image";
 import Brand from "../components/Brand";
+import { Link } from "react-router-dom";
 
 export default function Intro() {
   const [distanceScroll, setDistanceScroll] = useState(0); // [px]
@@ -125,7 +126,7 @@ export default function Intro() {
   ].map((social) => {
     return (
       <div key={social.id}>
-        <a href={social.target}>
+        <a href={social.target} target="_blank" rel="noreferrer">
           <img src={social.icon} alt={social.id} />
         </a>
       </div>
@@ -153,15 +154,15 @@ export default function Intro() {
   return (
     <>
       <nav ref={navbarElm} className={style.navBar}>
-        <Brand href="#" />
+        <a href="#">
+          <Brand />
+        </a>
         <div ref={navListElm} className={`${style.navList} ${style.inactive}`}>
           <span onClick={() => navToggle()} className={style.hamburger}>
             <span></span>
           </span>
           <ul>{navLinks}</ul>
-          <a href="#" type="button">
-            login
-          </a>
+          <Link to="/login">login</Link>
         </div>
       </nav>
       <section className={style.hero}>
@@ -175,9 +176,9 @@ export default function Intro() {
           <h1>
             MarkeTani<span></span>
           </h1>
-          <a href="#projects" type="button">
+          <Link to="/register">
             Bergabung<span></span>
-          </a>
+          </Link>
         </div>
       </section>
       <section id="about" ref={basedSection} className={style.about}>
@@ -201,7 +202,9 @@ export default function Intro() {
         <div className={style.contactList}>{contactInfo}</div>
       </section>
       <section className={style.footer}>
-        <Brand href="#" />
+        <a href="#">
+          <Brand />
+        </a>
         <h2>Ikuti Kami</h2>
         <div>{socialMedia}</div>
       </section>

@@ -10,8 +10,10 @@
   height: 80px;
   z-index: 1;
 }
-.navBar h1 {
-  font-size: 2rem;
+.navBar a {
+  align-self: center;
+  text-decoration: none;
+  font-size: 1.5rem;
 }
 .navBar .navList {
   display: flex;
@@ -398,8 +400,9 @@
   );
   padding: 1rem;
 }
-.footer h1 {
-  font-size: 1.5rem;
+.footer a {
+  text-decoration: none;
+  font-size: 1.3rem;
 }
 .footer h2 {
   color: rgb(var(--white-color-rgb));
@@ -449,8 +452,8 @@
   .navBar {
     height: fit-content;
   }
-  .navBar h1 {
-    font-size: 3rem;
+  .navBar a {
+    font-size: 2rem;
   }
   .navBar .navList {
     flex-direction: row;
@@ -509,7 +512,10 @@
   .contact {
     padding: 4.5rem 0;
   }
-  .footer h1 {
-    font-size: 2rem;
+  .footer a {
+    font-size: 1.5rem;
+  }
+  .footer h2 {
+    font-size: 1.3rem;
   }
 }
