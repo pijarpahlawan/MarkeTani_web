@@ -9,32 +9,35 @@ import {
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./assets/css/main.css";
 import App, { loader as appLoader } from "./App";
+import Profile from "./pages/Profile";
 import Error from "./pages/404";
 import Intro from "./pages/Intro";
 import Authentication from "./layouts/Authentication";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
+import Register, { action as registerAction } from "./pages/Register";
+import Login, { action as loginAction } from "./pages/Login";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 1000 * 5,
-    },
-  },
-});
+const queryClient = new QueryClient({});
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" loader={appLoader} element={<App />}>
-        <Route index element={<h1>Hallo</h1>} />
+      <Route path="/" loader={appLoader(queryClient)} element={<App />}>
+        <Route index element={<Profile />} />
         <Route path="coba" element={<h1>Coba</h1>} />
         <Route path="*" element={<Error />} />
       </Route>
       <Route path="/intro" element={<Intro />} />
       <Route element={<Authentication />}>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/register"
+          action={registerAction(queryClient)}
+          element={<Register />}
+        />
+        <Route
+          path="/login"
+          action={loginAction(queryClient)}
+          element={<Login />}
+        />
       </Route>
     </>
   )

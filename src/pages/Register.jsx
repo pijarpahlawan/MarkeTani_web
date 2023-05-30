@@ -1,12 +1,43 @@
-import { Form, Link } from "react-router-dom";
+import {
+  Form,
+  Link,
+  redirect,
+  useActionData,
+  useOutletContext,
+} from "react-router-dom";
 // import { useQuery } from "@tanstack/react-query";
 // import { getProvinces } from "../api/province";
 // import { getCities } from "../api/city";
-import LabedInputs from "../components/LabedInputs";
+import LabeledInputs from "../components/LabeledInputs";
+// import ErrorPopup from "../components/ErrorPopup";
 import style from "../assets/css/Register.module.css";
 // import LabeledSelect from "../components/LabeledSelect";
+import { register } from "../api";
+
+export const action =
+  (queryClient) =>
+  async ({ request }) => {
+    document.getElementById("registration-form").reset();
+
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+    const response = await register(data);
+    const body = await response.json();
+
+    if (response.status !== 201) {
+      const errorMessage = body.message;
+      return errorMessage;
+    }
+
+    queryClient.invalidateQueries({ queryKey: ["profile", "get"] });
+    return redirect("/");
+  };
 
 export default function Register() {
+  const errorMessage = useActionData() || null;
+  const setErrorMessage = useOutletContext();
+
+  console.log(errorMessage);
   // const { data: provinceQueryData, status: provinceQueryStatus } = useQuery({
   //   queryKey: ["provinces", "list", "all"],
   //   queryFn: () => getProvinces().then((res) => res.body),
@@ -38,6 +69,7 @@ export default function Register() {
       type: "email",
       name: "email",
       placeholder: "Masukkan email",
+      required: true,
     },
     {
       id: "username",
@@ -45,6 +77,7 @@ export default function Register() {
       type: "text",
       name: "username",
       placeholder: "Masukkan username",
+      required: true,
     },
     {
       id: "password",
@@ -52,6 +85,7 @@ export default function Register() {
       type: "password",
       name: "password",
       placeholder: "Masukkan password",
+      required: true,
     },
     {
       id: "repeated-password",
@@ -59,15 +93,18 @@ export default function Register() {
       type: "password",
       name: "repeated-password",
       placeholder: "Masukkan ulang password",
+      required: true,
     },
   ];
 
   return (
     <div className={style.register}>
       <h1>Registrasi</h1>
-      <Form className={style.form}>
-        <LabedInputs inputArray={inputs} />
-        <button type="submit">Register</button>
+      <Form id="registration-form" method="post" className={style.form}>
+        <LabeledInputs inputArray={inputs} />
+        <button type="submit" onClick={() => setErrorMessage(errorMessage)}>
+          Register
+        </button>
       </Form>
       <p>
         Sudah memiliki akun? <Link to="/login">Login</Link>

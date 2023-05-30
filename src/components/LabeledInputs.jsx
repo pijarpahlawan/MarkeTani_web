@@ -11,7 +11,7 @@ export default function LabedInputs(props) {
           name={input.name}
           defaultValue={input.defaultValue}
           placeholder={input.placeholder}
-          required
+          required={input.requried}
         />
       </div>
     );
