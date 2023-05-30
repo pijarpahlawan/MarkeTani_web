@@ -1,15 +1,17 @@
 .navbar {
   display: flex;
   flex-direction: row;
-  background-color: rgb(var(--black-color-rgb));
+  background-color: rgb(var(--white-color-rgb));
+  color: rgb(var(--black-color-rgb));
   align-items: center;
   width: 100vw;
 }
 .search {
   display: flex;
   align-items: center;
-  background-color: rgb(var(--white-color-rgb));
-  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid rgb(var(--dark-green-color-rgb));
+  border-radius: 10px;
   font-size: 3rem;
   padding: 10px;
   width: 100%;
@@ -31,8 +33,12 @@
 .avatar {
   justify-self: flex-end;
   position: relative;
+  border: 1px solid rgb(var(--dark-green-color-rgb));
   border-radius: 50%;
   margin: 1rem;
   width: 50px;
   height: 50px;
+}
+.extendedBrand h1 {
+  color: rgb(var(--black-color-rgb));
 }

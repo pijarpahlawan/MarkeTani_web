@@ -31,8 +31,8 @@ export default function App() {
   const { user } = useLoaderData();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout().then((response) => console.log(response.message));
+  const handleLogout = async () => {
+    await logout();
     navigate("/");
   };
 
@@ -41,7 +41,7 @@ export default function App() {
   return (
     <>
       <div className={style.navbar}>
-        <Brand href="" />
+        <Brand href="" extendedClass={style.extendedBrand} />
         <Form className={style.search} role="search">
           <IconContext.Provider value={{ className: style.searchIcon }}>
             <FaSearch />
