@@ -3,17 +3,17 @@ import {
   Link,
   redirect,
   useActionData,
-  useOutletContext,
+  useNavigation,
 } from "react-router-dom";
 import LabeledInputs from "../components/LabeledInputs";
+import ErrorPopup from "../components/ErrorPopup";
 import style from "../assets/css/Login.module.css";
 import { login } from "../api";
+import { useEffect, useState } from "react";
 
 export const action =
   (queryClient) =>
   async ({ request }) => {
-    document.getElementById("login-form").reset();
-
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
     const response = await login(data);
@@ -29,10 +29,14 @@ export const action =
   };
 
 export default function Login() {
+  const navigation = useNavigation();
   const errorMessage = useActionData() || null;
-  const setErrorMessage = useOutletContext();
+  const [error, setError] = useState();
 
-  console.log(errorMessage);
+  useEffect(() => {
+    document.getElementById("login-form").reset();
+    setError(errorMessage);
+  }, [errorMessage, navigation.state]);
 
   const inputs = [
     {
@@ -55,11 +59,18 @@ export default function Login() {
 
   return (
     <div className={style.login}>
+      {error && (
+        <ErrorPopup message={error} closePopup={() => setError(null)} />
+      )}
       <h1>Log In</h1>
       <Form id="login-form" method="post" className={style.form}>
         <LabeledInputs inputArray={inputs} />
-        <button type="submit" onClick={() => setErrorMessage(errorMessage)}>
-          Log In
+        <button type="submit">
+          {navigation.state === "submitting"
+            ? "Submitting..."
+            : navigation.state === "loading"
+            ? "Loading..."
+            : "Log In"}
         </button>
       </Form>
       <p>

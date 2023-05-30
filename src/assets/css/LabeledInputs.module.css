@@ -14,17 +14,13 @@
   font-weight: 700;
 }
 .input input {
-  border: none;
+  outline-color: rgb(var(--dark-green-color-rgb));
+  border: 1px solid rgb(var(--gray-color-rgb));
   border-radius: 5px;
-  outline: 0;
   color: rgb(var(--black-color-rgb));
   background-color: rgb(var(--white-color-rgb));
-  filter: drop-shadow(1px 1px 2px rgb(var(--gray-color-rgb)));
   font-weight: 400;
   padding: 0.5rem;
   width: 100%;
   box-sizing: border-box;
-}
-.input input:focus {
-  filter: drop-shadow(2px 2px 5px rgb(var(--gray-color-rgb)));
 }

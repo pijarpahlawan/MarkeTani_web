@@ -3,22 +3,21 @@ import {
   Link,
   redirect,
   useActionData,
-  useOutletContext,
+  useNavigation,
 } from "react-router-dom";
 // import { useQuery } from "@tanstack/react-query";
 // import { getProvinces } from "../api/province";
 // import { getCities } from "../api/city";
 import LabeledInputs from "../components/LabeledInputs";
-// import ErrorPopup from "../components/ErrorPopup";
+import ErrorPopup from "../components/ErrorPopup";
 import style from "../assets/css/Register.module.css";
 // import LabeledSelect from "../components/LabeledSelect";
 import { register } from "../api";
+import { useEffect, useState } from "react";
 
 export const action =
   (queryClient) =>
   async ({ request }) => {
-    document.getElementById("registration-form").reset();
-
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
     const response = await register(data);
@@ -34,10 +33,15 @@ export const action =
   };
 
 export default function Register() {
+  const navigation = useNavigation();
   const errorMessage = useActionData() || null;
-  const setErrorMessage = useOutletContext();
+  const [error, setError] = useState();
 
-  console.log(errorMessage);
+  useEffect(() => {
+    document.getElementById("registration-form").reset();
+    setError(errorMessage);
+  }, [errorMessage, navigation.state]);
+
   // const { data: provinceQueryData, status: provinceQueryStatus } = useQuery({
   //   queryKey: ["provinces", "list", "all"],
   //   queryFn: () => getProvinces().then((res) => res.body),
@@ -99,11 +103,18 @@ export default function Register() {
 
   return (
     <div className={style.register}>
+      {error && (
+        <ErrorPopup message={error} closePopup={() => setError(null)} />
+      )}
       <h1>Registrasi</h1>
       <Form id="registration-form" method="post" className={style.form}>
         <LabeledInputs inputArray={inputs} />
-        <button type="submit" onClick={() => setErrorMessage(errorMessage)}>
-          Register
+        <button type="submit">
+          {navigation.state === "submitting"
+            ? "Submitting..."
+            : navigation.state === "loading"
+            ? "Loading..."
+            : "Register"}
         </button>
       </Form>
       <p>
