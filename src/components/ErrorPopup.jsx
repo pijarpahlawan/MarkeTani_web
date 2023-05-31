@@ -1,12 +1,14 @@
+import { AiOutlineClose } from "react-icons/ai";
 import style from "../assets/css/ErrorPopup.module.css";
+import { IconContext } from "react-icons";
 
 export default function ErrorPopup(props) {
-  const { message, closePopup } = props;
-
   return (
     <div className={style.errorPopup}>
-      <span>{message}</span>
-      <button onClick={closePopup}>OK</button>
+      <span>{props.message}</span>
+      <IconContext.Provider value={{ className: style.closeIcon }}>
+        <AiOutlineClose onClick={props.closePopup} />
+      </IconContext.Provider>
     </div>
   );
 }

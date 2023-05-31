@@ -1,12 +1,25 @@
 .errorPopup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
+  gap: 1rem;
   top: 10px;
   right: 10px;
   padding: 10px;
-  background-color: #ff0000;
+  background-color: rgb(var(--pink-color-rgb));
   color: #ffffff;
-  border-radius: 4px;
+  border-radius: 10px;
+  animation: show_error 1s ease-in-out;
 }
-.errorPopup button {
-  margin-left: 10px;
+.errorPopup .closeIcon {
+  cursor: pointer;
+}
+@keyframes show_error {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
