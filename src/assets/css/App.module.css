@@ -6,6 +6,9 @@
   align-items: center;
   width: 100vw;
 }
+.navbar a {
+  text-decoration: none;
+}
 .search {
   display: flex;
   align-items: center;
@@ -41,4 +44,5 @@
 }
 .extendedBrand h1 {
   color: rgb(var(--black-color-rgb));
+  margin: 0 2rem;
 }

@@ -1,18 +1,58 @@
-import { useOutletContext } from "react-router-dom";
+import { Outlet, useOutletContext, NavLink, Link } from "react-router-dom";
+import { FaUser, FaCartArrowDown, FaHistory } from "react-icons/fa";
+import style from "../assets/css/Profile.module.css";
+import { IconContext } from "react-icons";
+import { logout } from "../api";
 
 export default function Profile() {
   const { user } = useOutletContext();
 
+  const handleLogout = async () => {
+    await logout();
+  };
+
   return (
-    <div>
-      <h1>Profile</h1>
-      {Object.keys(user).map((key) => {
-        return (
-          <p key={key}>
-            <strong>{key}</strong>: {user[key]}
-          </p>
-        );
-      })}
-    </div>
+    <>
+      <aside className={style.sideBar}>
+        <ul className={style.primaryMenus}>
+          <li>
+            <NavLink to="profile">
+              <IconContext.Provider value={{ className: style.icon }}>
+                <FaUser />
+              </IconContext.Provider>
+              Akun Saya
+            </NavLink>
+            <ul>
+              <li>
+                <NavLink to="profile">Profil</NavLink>
+              </li>
+              <li>
+                <NavLink to="password">Password</NavLink>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <NavLink to="cart">
+              <IconContext.Provider value={{ className: style.icon }}>
+                <FaCartArrowDown />
+              </IconContext.Provider>
+              Keranjang Saya
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="history">
+              <IconContext.Provider value={{ className: style.icon }}>
+                <FaHistory />
+              </IconContext.Provider>
+              Riwayat Pemesanan
+            </NavLink>
+          </li>
+        </ul>
+        <Link onClick={handleLogout} to="/" reloadDocument>
+          Log Out
+        </Link>
+      </aside>
+      <Outlet context={{ user }} />
+    </>
   );
 }

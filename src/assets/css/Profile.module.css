@@ -1,0 +1,58 @@
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  background-color: rgb(var(--white-color-rgb));
+  font-size: 1rem;
+  gap: 3rem;
+  padding: 3rem 0;
+  margin: 0;
+  width: 30vw;
+  height: calc(100vh - 185px);
+}
+.sideBar > a {
+  border: none;
+  border-radius: 5px;
+  color: rgb(var(--black-color-rgb));
+  background-color: rgb(var(--green-color-rgb));
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+.sideBar > a:hover {
+  color: rgb(var(--white-color-rgb));
+  background-color: rgb(var(--dark-green-color-rgb));
+}
+.sideBar .primaryMenus {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sideBar .primaryMenus li a {
+  color: rgb(var(--black-color-rgb));
+  text-decoration: none;
+}
+.sideBar .primaryMenus li a:hover {
+  color: rgb(var(--green-color-rgb));
+}
+.sideBar .primaryMenus .icon {
+  margin-right: 1rem;
+}
+.sideBar .primaryMenus li ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  list-style: none;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+}

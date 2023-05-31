@@ -10,11 +10,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./assets/css/main.css";
 import App, { loader as appLoader } from "./App";
 import Profile from "./pages/Profile";
-import Error from "./pages/404";
 import Intro from "./pages/Intro";
 import Authentication from "./layouts/Authentication";
 import Register, { action as registerAction } from "./pages/Register";
 import Login, { action as loginAction } from "./pages/Login";
+import Home from "./pages/Home";
 
 const queryClient = new QueryClient({});
 
@@ -22,9 +22,9 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" loader={appLoader(queryClient)} element={<App />}>
-        <Route index element={<Profile />} />
-        <Route path="coba" element={<h1>Coba</h1>} />
-        <Route path="*" element={<Error />} />
+        <Route index element={<Home />} />
+        <Route path="account" element={<Profile />} />
+        {/* <Route path="*" element={<Error />} /> */}
       </Route>
       <Route path="/intro" element={<Intro />} />
       <Route element={<Authentication />}>

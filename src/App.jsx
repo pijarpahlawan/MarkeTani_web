@@ -1,14 +1,8 @@
-import {
-  Form,
-  Outlet,
-  useLoaderData,
-  redirect,
-  useNavigate,
-} from "react-router-dom";
+import { Form, Outlet, useLoaderData, redirect, Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import Brand from "./components/Brand";
-import { getProfile, logout } from "./api";
+import { getProfile } from "./api";
 import style from "./assets/css/App.module.css";
 
 const getProfileQuery = () => ({
@@ -29,19 +23,15 @@ export const loader = (queryClient) => async () => {
 
 export default function App() {
   const { user } = useLoaderData();
-  const navigate = useNavigate();
-
-  const handleLogout = async () => {
-    await logout();
-    navigate("/");
-  };
 
   const placeholderPicture = "./user.png";
 
   return (
     <>
       <div className={style.navbar}>
-        <Brand href="" extendedClass={style.extendedBrand} />
+        <Link to="/">
+          <Brand href="" extendedClass={style.extendedBrand} />
+        </Link>
         <Form className={style.search} role="search">
           <IconContext.Provider value={{ className: style.searchIcon }}>
             <FaSearch />
@@ -53,12 +43,13 @@ export default function App() {
             placeholder="Cari di Marketani"
           />
         </Form>
-        <img
-          className={style.avatar}
-          src={user.avatarUrl || placeholderPicture}
-          alt="avatar"
-        />
-        <button onClick={handleLogout}>Logout</button>
+        <Link to="account">
+          <img
+            className={style.avatar}
+            src={user.avatarUrl || placeholderPicture}
+            alt="avatar"
+          />
+        </Link>
       </div>
       <Outlet context={{ user }} />
     </>
