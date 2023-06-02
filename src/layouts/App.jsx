@@ -1,9 +1,9 @@
 import { Form, Outlet, useLoaderData, redirect, Link } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";
 import { IconContext } from "react-icons";
-import Brand from "./components/Brand";
-import { getProfile } from "./api";
-import style from "./assets/css/App.module.css";
+import { FaSearch } from "react-icons/fa";
+import { getProfile } from "../api";
+import Brand from "../components/Brand";
+import style from "../assets/css/App.module.css";
 
 const getProfileQuery = () => ({
   queryKey: ["profile", "get"],

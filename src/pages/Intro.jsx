@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Brand from "../components/Brand";
 import style from "../assets/css/Intro.module.css";
 import img from "../assets/js/intro-image";
-import Brand from "../components/Brand";
-import { Link } from "react-router-dom";
 
 export default function Intro() {
   const [distanceScroll, setDistanceScroll] = useState(0); // [px]

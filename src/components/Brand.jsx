@@ -1,6 +1,6 @@
 import style from "../assets/css/Brand.module.css";
 
-export default function Logo(props) {
+export default function Brand(props) {
   return (
     <div className={`${style.brand} ${props.extendedClass}`}>
       <h1>

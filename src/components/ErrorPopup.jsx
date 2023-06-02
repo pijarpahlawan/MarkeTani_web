@@ -1,6 +1,6 @@
+import { IconContext } from "react-icons";
 import { AiOutlineClose } from "react-icons/ai";
 import style from "../assets/css/ErrorPopup.module.css";
-import { IconContext } from "react-icons";
 
 export default function ErrorPopup(props) {
   return (

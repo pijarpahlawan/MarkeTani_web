@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Form,
   Link,
@@ -5,11 +6,10 @@ import {
   useActionData,
   useNavigation,
 } from "react-router-dom";
+import { login } from "../api";
 import LabeledInputs from "../components/LabeledInputs";
 import ErrorPopup from "../components/ErrorPopup";
 import style from "../assets/css/Login.module.css";
-import { login } from "../api";
-import { useEffect, useState } from "react";
 
 export const action =
   (queryClient) =>

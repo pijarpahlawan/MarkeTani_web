@@ -1,7 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
-import style from "../assets/css/Authentication.module.css";
 import Logo from "../components/Logo";
 import Brand from "../components/Brand";
+import style from "../assets/css/Authentication.module.css";
 
 export default function Authentication() {
   return (

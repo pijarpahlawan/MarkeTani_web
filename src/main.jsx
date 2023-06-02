@@ -7,14 +7,15 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import "./assets/css/main.css";
-import App, { loader as appLoader } from "./App";
-import Profile from "./pages/Profile";
-import Intro from "./pages/Intro";
+import App, { loader as appLoader } from "./layouts/App";
 import Authentication from "./layouts/Authentication";
+import Profile from "./layouts/Profile";
+import Intro from "./pages/Intro";
 import Register, { action as registerAction } from "./pages/Register";
 import Login, { action as loginAction } from "./pages/Login";
+import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
+import "./assets/css/main.css";
 
 const queryClient = new QueryClient({});
 
@@ -24,7 +25,6 @@ const router = createBrowserRouter(
       <Route path="/" loader={appLoader(queryClient)} element={<App />}>
         <Route index element={<Home />} />
         <Route path="account" element={<Profile />} />
-        {/* <Route path="*" element={<Error />} /> */}
       </Route>
       <Route path="/intro" element={<Intro />} />
       <Route element={<Authentication />}>
@@ -39,6 +39,7 @@ const router = createBrowserRouter(
           element={<Login />}
         />
       </Route>
+      <Route path="*" element={<ErrorPage />} />
     </>
   )
 );

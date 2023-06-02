@@ -1,16 +1,21 @@
 .errorPopup {
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
-  position: fixed;
+  align-self: flex-end;
+  position: relative;
   gap: 1rem;
-  top: 10px;
-  right: 10px;
   padding: 10px;
   background-color: rgb(var(--pink-color-rgb));
   color: #ffffff;
   border-radius: 10px;
   animation: show_error 1s ease-in-out;
+  width: fit-content;
+  flex-wrap: wrap;
+}
+.errorPopup span {
+  position: relative;
+  width: 12rem;
 }
 .errorPopup .closeIcon {
   cursor: pointer;

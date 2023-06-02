@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Form,
   Link,
@@ -8,12 +9,11 @@ import {
 // import { useQuery } from "@tanstack/react-query";
 // import { getProvinces } from "../api/province";
 // import { getCities } from "../api/city";
+import { register } from "../api";
 import LabeledInputs from "../components/LabeledInputs";
 import ErrorPopup from "../components/ErrorPopup";
 import style from "../assets/css/Register.module.css";
 // import LabeledSelect from "../components/LabeledSelect";
-import { register } from "../api";
-import { useEffect, useState } from "react";
 
 export const action =
   (queryClient) =>

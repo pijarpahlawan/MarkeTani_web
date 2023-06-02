@@ -1,8 +1,8 @@
 import { Outlet, useOutletContext, NavLink, Link } from "react-router-dom";
-import { FaUser, FaCartArrowDown, FaHistory } from "react-icons/fa";
-import style from "../assets/css/Profile.module.css";
 import { IconContext } from "react-icons";
+import { FaUser, FaCartArrowDown, FaHistory } from "react-icons/fa";
 import { logout } from "../api";
+import style from "../assets/css/Profile.module.css";
 
 export default function Profile() {
   const { user } = useOutletContext();
