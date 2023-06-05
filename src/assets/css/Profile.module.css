@@ -1,18 +1,40 @@
-.sideBar {
+.main {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(var(--white-color-rgb));
+}
+.inactive .sideIcon,
+.inactive .sidebar {
+  left: -310px;
+}
+.sideIcon {
+  position: relative;
+  cursor: pointer;
+  top: -7px;
+  left: -17px;
+  color: rgb(var(--dark-green-color-rgb));
+  font-size: 3rem;
+  transition: left 0.5s ease-in-out;
+  margin: 0;
+}
+.sidebar {
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   position: relative;
   background-color: rgb(var(--white-color-rgb));
+  border-right: 3px solid rgb(var(--dark-green-color-rgb));
   font-size: 1rem;
+  left: 0;
   gap: 3rem;
   padding: 3rem 0;
   margin: 0;
-  width: 30vw;
+  width: 18rem;
   height: calc(100vh - 185px);
+  transition: left 0.5s ease-in-out;
 }
-.sideBar > a {
+.sidebar > a {
   border: none;
   border-radius: 5px;
   color: rgb(var(--white-color-rgb));
@@ -22,11 +44,11 @@
   font-size: 1rem;
   padding: 0.5rem;
 }
-.sideBar > a:hover {
+.sidebar > a:hover {
   color: rgb(var(--black-color-rgb));
   background-color: rgb(var(--yellow-color-rgb));
 }
-.sideBar .primaryMenus {
+.sidebar .primaryMenus {
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -36,17 +58,17 @@
   padding: 0;
   margin: 0;
 }
-.sideBar .primaryMenus li a {
+.sidebar .primaryMenus li a {
   color: rgb(var(--black-color-rgb));
   text-decoration: none;
 }
-.sideBar .primaryMenus li a:hover {
+.sidebar .primaryMenus li a:hover {
   color: rgb(var(--green-color-rgb));
 }
-.sideBar .primaryMenus .icon {
+.sidebar .primaryMenus .icon {
   margin-right: 1rem;
 }
-.sideBar .primaryMenus li ul {
+.sidebar .primaryMenus li ul {
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -55,4 +77,18 @@
   gap: 1rem;
   margin-top: 1rem;
   margin-left: 0.5rem;
+}
+
+@media all and (max-width: 1024px) {
+  .sidebar,
+  .sideIcon {
+    left: -310px;
+  }
+  .inactive .sideIcon {
+    top: -7px;
+    left: -17px;
+  }
+  .inactive .sidebar {
+    left: 0px;
+  }
 }

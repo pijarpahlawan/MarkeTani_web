@@ -1,19 +1,27 @@
+import { useRef } from "react";
 import { Outlet, useOutletContext, NavLink, Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { FaUser, FaCartArrowDown, FaHistory } from "react-icons/fa";
+import { GoTriangleRight } from "react-icons/go";
 import { logout } from "../api";
 import style from "../assets/css/Profile.module.css";
 
 export default function Profile() {
   const { user } = useOutletContext();
+  const sidebarElm = useRef(null);
 
   const handleLogout = async () => {
     await logout();
   };
 
+  const sideToggle = () => {
+    const thisElement = sidebarElm.current;
+    thisElement.classList.toggle(style.inactive);
+  };
+
   return (
-    <>
-      <aside className={style.sideBar}>
+    <main ref={sidebarElm} className={style.main}>
+      <aside className={style.sidebar}>
         <ul className={style.primaryMenus}>
           <li>
             <NavLink to="profile">
@@ -52,7 +60,10 @@ export default function Profile() {
           Log Out
         </Link>
       </aside>
+      <IconContext.Provider value={{ className: style.sideIcon }}>
+        <GoTriangleRight onClick={sideToggle} />
+      </IconContext.Provider>
       <Outlet context={{ user }} />
-    </>
+    </main>
   );
 }

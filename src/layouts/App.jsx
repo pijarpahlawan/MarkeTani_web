@@ -28,7 +28,7 @@ export default function App() {
 
   return (
     <>
-      <div className={style.navbar}>
+      <header className={style.header}>
         <Link to="/">
           <Brand href="" extendedClass={style.extendedBrand} />
         </Link>
@@ -50,7 +50,7 @@ export default function App() {
             alt="avatar"
           />
         </Link>
-      </div>
+      </header>
       <Outlet context={{ user }} />
     </>
   );
