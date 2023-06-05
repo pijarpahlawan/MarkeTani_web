@@ -9,10 +9,15 @@ import {
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import App, { loader as appLoader } from "./layouts/App";
 import Authentication from "./layouts/Authentication";
-import Profile from "./layouts/Profile";
+import Account from "./layouts/Account";
 import Intro from "./pages/Intro";
 import Register, { action as registerAction } from "./pages/Register";
 import Login, { action as loginAction } from "./pages/Login";
+import Profile from "./pages/Profile";
+import Password from "./pages/Password";
+import Cart from "./pages/Cart";
+import Wishlist from "./pages/Wishlist";
+import History from "./pages/History";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
 import "./assets/css/main.css";
@@ -24,7 +29,13 @@ const router = createBrowserRouter(
     <>
       <Route path="/" loader={appLoader(queryClient)} element={<App />}>
         <Route index element={<Home />} />
-        <Route path="account" element={<Profile />} />
+        <Route path="account" element={<Account />}>
+          <Route path="profile" element={<Profile />} />
+          <Route path="password" element={<Password />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="wishlist" element={<Wishlist />} />
+          <Route path="history" element={<History />} />
+        </Route>
       </Route>
       <Route path="/intro" element={<Intro />} />
       <Route element={<Authentication />}>
