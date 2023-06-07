@@ -1,66 +1,64 @@
-import { useRef } from "react";
+import { useState } from "react";
 import { Outlet, useOutletContext, NavLink, Link } from "react-router-dom";
-import { IconContext } from "react-icons";
 import { FaUser, FaCartArrowDown, FaHistory } from "react-icons/fa";
-import { GoTriangleRight } from "react-icons/go";
 import { MdFavorite } from "react-icons/md";
+import { HiChevronDoubleRight } from "react-icons/hi";
 import { logout } from "../api";
 import style from "../assets/css/Account.module.css";
 
 export default function Account() {
   const { user } = useOutletContext();
-  const sidebarElm = useRef(null);
+  const [isSideCollapse, setIsSideCollapse] = useState(false);
 
   const handleLogout = async () => {
     await logout();
   };
 
-  const sideToggle = () => {
-    const thisElement = sidebarElm.current;
-    thisElement.classList.toggle(style.inactive);
-  };
-
   return (
-    <main ref={sidebarElm} className={style.main}>
+    <main
+      className={`${style.main} ${isSideCollapse ? style["inactive"] : ""}`}
+    >
       <aside className={style.sidebar}>
         <ul className={style.primaryMenus}>
           <li>
-            <NavLink to="profile">
-              <IconContext.Provider value={{ className: style.icon }}>
-                <FaUser />
-              </IconContext.Provider>
+            <NavLink to="profile" state={{ isSideCollapse: isSideCollapse }}>
+              <FaUser className={style.icon} />
               Akun Saya
             </NavLink>
             <ul>
               <li>
-                <NavLink to="profile">Profil</NavLink>
+                <NavLink
+                  to="profile"
+                  state={{ isSideCollapse: isSideCollapse }}
+                >
+                  Profil
+                </NavLink>
               </li>
               <li>
-                <NavLink to="password">Password</NavLink>
+                <NavLink
+                  to="password"
+                  state={{ isSideCollapse: isSideCollapse }}
+                >
+                  Password
+                </NavLink>
               </li>
             </ul>
           </li>
           <li>
-            <NavLink to="cart">
-              <IconContext.Provider value={{ className: style.icon }}>
-                <FaCartArrowDown />
-              </IconContext.Provider>
+            <NavLink to="cart" state={{ isSideCollapse: isSideCollapse }}>
+              <FaCartArrowDown className={style.icon} />
               Keranjang Saya
             </NavLink>
           </li>
           <li>
-            <NavLink to="wishlist">
-              <IconContext.Provider value={{ className: style.icon }}>
-                <MdFavorite />
-              </IconContext.Provider>
+            <NavLink to="wishlist" state={{ isSideCollapse: isSideCollapse }}>
+              <MdFavorite className={style.icon} />
               Wishlist
             </NavLink>
           </li>
           <li>
-            <NavLink to="history">
-              <IconContext.Provider value={{ className: style.icon }}>
-                <FaHistory />
-              </IconContext.Provider>
+            <NavLink to="history" state={{ isSideCollapse: isSideCollapse }}>
+              <FaHistory className={style.icon} />
               Riwayat Pemesanan
             </NavLink>
           </li>
@@ -69,9 +67,13 @@ export default function Account() {
           Log Out
         </Link>
       </aside>
-      <IconContext.Provider value={{ className: style.sideIcon }}>
-        <GoTriangleRight onClick={sideToggle} />
-      </IconContext.Provider>
+      <span
+        onClick={() => {
+          setIsSideCollapse(!isSideCollapse);
+        }}
+      >
+        <HiChevronDoubleRight className={style.sideIcon} />
+      </span>
       <Outlet context={{ user }} />
     </main>
   );

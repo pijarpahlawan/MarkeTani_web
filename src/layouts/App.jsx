@@ -1,9 +1,9 @@
 import { Form, Outlet, useLoaderData, redirect, Link } from "react-router-dom";
-import { IconContext } from "react-icons";
 import { FaSearch } from "react-icons/fa";
 import { getProfile } from "../api";
 import Brand from "../components/Brand";
 import style from "../assets/css/App.module.css";
+import placeholderUser from "/user.png";
 
 const getProfileQuery = () => ({
   queryKey: ["profile", "get"],
@@ -24,8 +24,6 @@ export const loader = (queryClient) => async () => {
 export default function App() {
   const { user } = useLoaderData();
 
-  const placeholderPicture = "./user.png";
-
   return (
     <>
       <header className={style.header}>
@@ -33,9 +31,7 @@ export default function App() {
           <Brand href="" extendedClass={style.extendedBrand} />
         </Link>
         <Form className={style.search} role="search">
-          <IconContext.Provider value={{ className: style.searchIcon }}>
-            <FaSearch />
-          </IconContext.Provider>
+          <FaSearch className={style.searchIcon} />
           <input
             type="search"
             name="q"
@@ -46,7 +42,7 @@ export default function App() {
         <Link to="account">
           <img
             className={style.avatar}
-            src={user.avatarUrl || placeholderPicture}
+            src={user.avatarUrl || placeholderUser}
             alt="avatar"
           />
         </Link>
