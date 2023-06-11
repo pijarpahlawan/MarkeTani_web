@@ -9,7 +9,7 @@ export const getProfile = () => {
 };
 
 export const updateProfile = (params) => {
-  return fetch(`${import.meta.env.VITE_BACKEND_URL}}/profile`, {
+  return fetch(`${import.meta.env.VITE_BACKEND_URL}/profile`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

@@ -1,4 +1,10 @@
-import { Form, Outlet, useLoaderData, redirect, Link } from "react-router-dom";
+import {
+  Form,
+  Outlet,
+  // useLoaderData,
+  redirect,
+  Link,
+} from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { getProfile } from "../api";
 import Brand from "../components/Brand";
@@ -22,7 +28,7 @@ export const loader = (queryClient) => async () => {
 };
 
 export default function App() {
-  const { user } = useLoaderData();
+  // const { user } = useLoaderData();
 
   return (
     <>
@@ -42,12 +48,17 @@ export default function App() {
         <Link to="account">
           <img
             className={style.avatar}
-            src={user.avatarUrl || placeholderUser}
+            src={
+              // user.avatarUrl ||
+              placeholderUser
+            }
             alt="avatar"
           />
         </Link>
       </header>
-      <Outlet context={{ user }} />
+      <Outlet
+      // context={{ user }}
+      />
     </>
   );
 }

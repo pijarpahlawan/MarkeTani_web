@@ -7,12 +7,15 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import App, { loader as appLoader } from "./layouts/App";
+import App from // { loader as appLoader }
+"./layouts/App";
 import Authentication from "./layouts/Authentication";
 import Account from "./layouts/Account";
 import Intro from "./pages/Intro";
-import Register, { action as registerAction } from "./pages/Register";
-import Login, { action as loginAction } from "./pages/Login";
+import Register from // { action as registerAction }
+"./pages/Register";
+import Login from //  { action as loginAction }
+"./pages/Login";
 import Profile from "./pages/Profile";
 import Password from "./pages/Password";
 import Cart from "./pages/Cart";
@@ -27,7 +30,11 @@ const queryClient = new QueryClient({});
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" loader={appLoader(queryClient)} element={<App />}>
+      <Route
+        path="/"
+        // loader={appLoader(queryClient)}
+        element={<App />}
+      >
         <Route index element={<Home />} />
         <Route path="account" element={<Account />}>
           <Route path="profile" element={<Profile />} />
@@ -41,12 +48,12 @@ const router = createBrowserRouter(
       <Route element={<Authentication />}>
         <Route
           path="/register"
-          action={registerAction(queryClient)}
+          // action={registerAction(queryClient)}
           element={<Register />}
         />
         <Route
           path="/login"
-          action={loginAction(queryClient)}
+          // action={loginAction(queryClient)}
           element={<Login />}
         />
       </Route>
