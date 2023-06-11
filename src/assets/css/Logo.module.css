@@ -1,0 +1,11 @@
+.logo {
+  fill-opacity: 0;
+  stroke: rgb(var(--green-color-rgb));
+  stroke-width: 10px;
+  stroke-dasharray: 4500;
+  /* animation: draw 8s ease;
+  animation-iteration-count: infinite; */
+  transform: perspective(300px) rotateX(30deg);
+  width: 10rem;
+  height: 10rem;
+}

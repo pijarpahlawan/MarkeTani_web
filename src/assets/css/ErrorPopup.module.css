@@ -1,0 +1,30 @@
+.errorPopup {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  align-self: flex-end;
+  position: relative;
+  gap: 1rem;
+  padding: 10px;
+  background-color: rgb(var(--pink-color-rgb));
+  color: #ffffff;
+  border-radius: 10px;
+  animation: show_error 1s ease-in-out;
+  width: fit-content;
+  flex-wrap: wrap;
+}
+.errorPopup span {
+  position: relative;
+  width: 12rem;
+}
+.errorPopup .closeIcon {
+  cursor: pointer;
+}
+@keyframes show_error {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

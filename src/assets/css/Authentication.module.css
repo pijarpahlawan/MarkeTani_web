@@ -1,0 +1,46 @@
+.authentication {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(var(--white-color-rgb));
+  gap: 3rem;
+  height: 100vh;
+}
+
+.authentication a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  gap: 1rem;
+}
+
+.extendedLogo {
+  stroke: rgb(var(--white-color-rgb)) !important;
+  stroke-opacity: 50%;
+}
+
+.extendedLogo path {
+  fill: rgb(var(--green-color-rgb)) !important;
+  fill-opacity: 100% !important;
+  filter: drop-shadow(5px 5px 10px rgb(var(--black-color-rgb)));
+}
+
+.extendedBrand {
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 5px rgb(var(--black-color-rgb));
+}
+
+.extendedBrand h1 {
+  color: rgb(var(--black-color-rgb));
+}
+
+@media screen and (min-width: 1024px) {
+  .authentication {
+    flex-direction: row;
+    gap: 10rem;
+  }
+}

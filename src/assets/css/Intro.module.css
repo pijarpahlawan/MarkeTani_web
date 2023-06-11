@@ -1,0 +1,521 @@
+/** START HEADER **/
+.navBar {
+  display: flex;
+  position: fixed;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  width: 100%;
+  height: 80px;
+  z-index: 1;
+}
+.navBar a {
+  align-self: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+.navBar .navList {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0px 0px 0px 10px;
+  transition: 0.5s ease;
+  background-color: rgba(var(--black-color-rgb), 0.8);
+  padding: 20px;
+  width: fit-content;
+  height: fit-content;
+}
+.navBar .navList .hamburger {
+  display: flex;
+  align-items: center;
+  align-self: self-end;
+  justify-content: center;
+  background-color: rgba(var(--dark-green-color-rgb), 0.3);
+  border: 3px solid rgb(var(--green-color-rgb));
+  border-radius: 30%;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+}
+.navBar .navList .hamburger span,
+.navBar .navList .hamburger span::before,
+.navBar .navList .hamburger span::after {
+  position: relative;
+  background-color: rgb(var(--green-color-rgb));
+  width: 20px;
+  height: 2px;
+  content: "";
+}
+.navBar .navList .hamburger span::before {
+  position: absolute;
+  bottom: 0px;
+  transition: bottom 0.3s ease;
+}
+.navBar .navList .hamburger span::after {
+  position: absolute;
+  top: 0px;
+  transition: top 0.3s ease;
+}
+.navBar .navList ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+}
+.navBar .navList ul a {
+  display: block;
+  transition: 0.3s color ease;
+  padding: 18px 36px;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.2rem;
+  color: rgb(var(--white-color-rgb));
+  font-size: 0.9rem;
+}
+.navBar .navList ul li:hover a {
+  color: rgb(var(--green-color-rgb));
+}
+.navBar .navList > a {
+  display: block;
+  align-self: center;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  background-color: rgb(var(--dark-green-color-rgb));
+  margin: 10px;
+  padding: 10px 20px;
+  height: fit-content;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.1rem;
+  color: rgb(var(--white-color-rgb));
+  font-size: 1rem;
+}
+.navBar .navList > a:hover {
+  background-color: rgb(var(--green-color-rgb));
+  color: rgb(var(--black-color-rgb));
+}
+/** END HEADER **/
+
+/** START HERO SECTION **/
+.hero {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background-image: url("../images/tani.jpg");
+  background-size: cover;
+  width: 100%;
+  height: calc(100vh + 5px);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.7;
+  background-color: rgb(var(--black-color-rgb));
+  width: 100%;
+  height: 100%;
+}
+.hero div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 6rem;
+  color: rgb(var(--white-color-rgb));
+}
+.hero div h1 {
+  display: block;
+  position: relative;
+  width: fit-content;
+  animation: text_reveal 0.5s ease forwards;
+  animation-delay: 1s;
+  margin: 5px 0;
+  color: transparent;
+  font-size: 2.5rem;
+}
+.hero div h1:nth-child(1) {
+  animation-delay: 1s;
+}
+.hero div h1:nth-child(2) {
+  animation-delay: 2s;
+}
+.hero div h1:nth-child(3) {
+  animation: text_reveal_name 0.5s ease forwards;
+  animation-delay: 3s;
+}
+.hero div span {
+  position: absolute;
+  inset: 0;
+  background-color: rgb(var(--green-color-rgb));
+  border-radius: 8px;
+  width: 0;
+  height: 100%;
+  animation: text_reveal_box 1s ease;
+}
+.hero div h1:nth-child(1) span {
+  animation-delay: 0.5s;
+}
+.hero div h1:nth-child(2) span {
+  animation-delay: 1.5s;
+}
+.hero div h1:nth-child(3) span {
+  animation-delay: 2.5s;
+}
+.hero div a {
+  position: relative;
+  border-radius: 10px;
+  background-color: rgba(var(--dark-green-color-rgb), 0.3);
+  border: 2px solid rgb(var(--green-color-rgb));
+  color: rgb(var(--white-color-rgb));
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.1rem;
+  margin-top: 30px;
+  padding: 10px;
+  font-size: 1.5rem;
+}
+.hero div a:hover {
+  background-color: rgb(var(--green-color-rgb));
+  color: rgb(var(--black-color-rgb));
+}
+@keyframes text_reveal {
+  100% {
+    color: rgb(var(--white-color-rgb));
+  }
+}
+@keyframes text_reveal_name {
+  100% {
+    color: rgb(var(--green-color-rgb));
+    font-weight: bold;
+  }
+}
+@keyframes text_reveal_box {
+  50% {
+    left: 0;
+    width: 100%;
+  }
+  100% {
+    left: 100%;
+    width: 0;
+  }
+}
+/** END HERO SECTION **/
+
+/** START ABOUT SECTION **/
+.about {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(var(--white-color-rgb));
+  padding: 3rem 0;
+  width: 100%;
+}
+.about h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(var(--black-color-rgb));
+}
+.about h1 span {
+  color: rgb(var(--green-color-rgb));
+}
+.about p {
+  letter-spacing: 0.1rem;
+  margin: 0 8rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgb(var(--black-color-rgb));
+}
+/** END ABOUT SECTION **/
+
+/** START PROJECTS SECTION **/
+.products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(var(--white-color-rgb));
+  padding: 3rem 0;
+}
+.products > h1 {
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.products .allProducts {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.products .allProducts > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  transition: 0.3s ease transform;
+  margin: 20px auto;
+  width: 80%;
+  height: 100%;
+}
+.products .allProducts > div:hover {
+  transform: scale(1.1);
+}
+.products .allProducts > div:nth-child(even) {
+  flex-direction: row-reverse;
+}
+.products .allProducts > div .productInfo {
+  display: flex;
+  position: relative;
+  flex-basis: 50%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border-radius: 10px 0 0 10px;
+  background-image: linear-gradient(
+    60deg,
+    rgb(var(--black-color-rgb)) 0%,
+    rgb(var(--dark-green-color-rgb)) 100%
+  );
+  color: rgb(var(--white-color-rgb));
+  padding: 30px;
+}
+.products .allProducts > div:nth-child(even) .productInfo {
+  border-radius: 0 10px 10px 0;
+}
+.products .allProducts > div .productInfo h1 {
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.products .allProducts > div .productInfo p {
+  font-size: 1rem;
+}
+.products .allProducts > div .productImg {
+  position: relative;
+  flex-basis: 50%;
+}
+.products .allProducts > div .productImg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background-color: rgba(var(--dark-green-color-rgb), 0.3);
+  width: 100%;
+  height: 100%;
+}
+.products .allProducts > div .productImg img {
+  position: absolute;
+  border-radius: 0 10px 10px 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.products .allProducts > div:nth-child(even) .productImg img {
+  border-radius: 10px 0 0 10px;
+}
+/** END PROJECTS SECTION **/
+
+/** START CONTACT SECTION **/
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(var(--white-color-rgb));
+  padding: 3rem 0;
+  width: 100%;
+}
+.contact > h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(var(--black-color-rgb));
+}
+.contact .contactList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  width: 80%;
+  height: 100%;
+}
+.contact .contactList div {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 0px 18px 0 rgba(var(--black-color-rgb), 0.2);
+  transition: 0.3s ease box-shadow;
+  border-radius: 10px;
+  margin: 1rem;
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+}
+.contact .contactList div:hover {
+  box-shadow: 0px 0px 5px 0 rgba(var(--black-color-rgb), 0.5);
+}
+.contact .contactList div img {
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+}
+.contact div h1 {
+  text-transform: capitalize;
+  letter-spacing: 0.2rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: rgb(var(--black-color-rgb));
+}
+.contact div h2 {
+  text-transform: capitalize;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  font-size: 0.5rem;
+  font-weight: 500;
+  color: rgb(var(--black-color-rgb));
+}
+/** END CONTACT SECTION **/
+
+/** START FOOTER SECTION **/
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(
+    60deg,
+    rgb(var(--black-color-rgb)) 0%,
+    rgb(var(--dark-green-color-rgb)) 100%
+  );
+  padding: 1rem;
+}
+.footer a {
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+.footer h2 {
+  color: rgb(var(--white-color-rgb));
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+  font-size: 1rem;
+  margin: 10px 0;
+}
+.footer > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+}
+.footer > div div {
+  margin: 0 5px;
+  padding: 10px;
+}
+.footer > div div img {
+  transition: 0.3s ease transform;
+  height: 50px;
+  width: 50px;
+}
+.footer > div div:hover img {
+  transform: scale(1.1);
+}
+/** END FOOTER SECTION **/
+
+/** MEDIA QUERIES **/
+@media all and (max-width: 1023px) {
+  .navBar .navList.inactive {
+    background-color: transparent;
+  }
+  .navBar .navList.inactive .hamburger span::before {
+    bottom: 8px;
+  }
+  .navBar .navList.inactive .hamburger span::after {
+    top: 8px;
+  }
+  .navBar .navList.inactive > ul,
+  .navBar .navList.inactive > a {
+    display: none;
+  }
+}
+@media all and (min-width: 1024px) {
+  .navBar {
+    height: fit-content;
+  }
+  .navBar a {
+    font-size: 2rem;
+  }
+  .navBar .navList {
+    flex-direction: row;
+    background-color: transparent;
+    padding: 0;
+  }
+  .navBar .navList .hamburger {
+    display: none;
+  }
+  .navBar .navList ul {
+    flex-direction: row;
+  }
+  .navBar .navList ul a {
+    padding: 0.8rem 1.5rem;
+  }
+  .hero div h1 {
+    font-size: 3.7rem;
+  }
+  .hero div a {
+    font-size: 1.5rem;
+  }
+  .about h1 {
+    font-size: 3rem;
+  }
+  .about p {
+    margin: 0 12rem;
+    font-size: 1.5rem;
+  }
+  .products > h1 {
+    font-size: 3rem;
+  }
+  .products .allProducts > div .productInfo h1 {
+    font-size: 2rem;
+  }
+  .products .allProducts > div .productInfo p {
+    font-size: 1.5rem;
+  }
+  .contact > h1 {
+    font-size: 3rem;
+  }
+  .contact .contactList div {
+    width: 20%;
+  }
+  .contact .contactList div img {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+  .contact .contactList div h1 {
+    font-size: 1.2rem;
+  }
+  .contact .contactList div h2 {
+    font-size: 0.8rem;
+  }
+  .about,
+  .products,
+  .contact {
+    padding: 4.5rem 0;
+  }
+  .footer a {
+    font-size: 1.5rem;
+  }
+  .footer h2 {
+    font-size: 1.3rem;
+  }
+}
