@@ -1,0 +1,28 @@
+.image {
+  display: flex; align-items: center; gap: 1rem;
+  vertical-align: middle;
+}
+
+.text {
+  display: inline-block;
+  vertical-align: middle;
+}
+.detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: right;
+  gap: 1rem;
+
+  }
+  .produk {
+    font-size: 2rem;
+    font-weight: 650;
+  }
+  .harga {
+    font-size: 1.7rem;
+    font-weight: 300;
+  }
+  .stok {
+    font-size: 1.3rem;
+  }
