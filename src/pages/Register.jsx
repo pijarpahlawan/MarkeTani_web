@@ -10,7 +10,7 @@ import {
 // import { getProvinces } from "../api/province";
 // import { getCities } from "../api/city";
 import { register } from "../api";
-import LabeledInputs from "../components/LabeledInputs";
+import LabeledInput from "../components/LabeledInput";
 import ErrorPopup from "../components/ErrorPopup";
 import style from "../assets/css/Register.module.css";
 // import LabeledSelect from "../components/LabeledSelect";

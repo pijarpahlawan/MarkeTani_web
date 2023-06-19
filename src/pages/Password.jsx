@@ -6,7 +6,9 @@ export default function Password() {
       <div className={style.header}>
         <h1>Ubah Password Anda</h1>
         <p>Lindung privasi Anda dengan menambah pasword yang unik</p>
+        <hr />
       </div>
+      <div className={style.header}>
       <LabeledInput extendedClass={style.input} input={{
         id: "oldPswd",
         label: "Password Lama",
@@ -31,9 +33,9 @@ export default function Password() {
         placeholder: "Kelompok_3",
         required: true,
       }} />
-      <div className={style.btnSubmit}>
-
-      <button className={style.btnSubmit}>Apply</button>
+      </div>
+      <div className={style.btn}>
+        <button className={style.btnSubmit}>Apply</button>
       </div>
     </main>
 

@@ -5,6 +5,7 @@
   margin-left: 0px;
   background-color: rgb(var(--white-color-rgb));
   transition: margin-left 0.5s ease-in-out;
+  /* transform: translateX(300px); */
 }
 .inactive {
   margin-left: -290px;
@@ -17,10 +18,14 @@
   border-top: 3px solid rgb(var(--dark-green-color-rgb));
   border-right: 3px solid rgb(var(--dark-green-color-rgb));
   border-bottom: 3px solid rgb(var(--dark-green-color-rgb));
-  background-color: rgb(var(--green-color-rgb));
+  background-color: rgba(0, 0, 0, 0.63);
   color: rgb(var(--white-color-rgb));
   font-size: 2rem;
   margin: 0;
+}
+.sideIcon:hover{
+  background-color: rgb(var(--green-color-rgb));
+  border-radius: 5px;
 }
 .sidebar {
   display: flex;

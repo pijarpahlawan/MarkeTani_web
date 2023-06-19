@@ -7,7 +7,7 @@ import {
   useNavigation,
 } from "react-router-dom";
 import { login } from "../api";
-import LabeledInputs from "../components/LabeledInputs";
+import LabeledInput from "../components/LabeledInput";
 import ErrorPopup from "../components/ErrorPopup";
 import style from "../assets/css/Login.module.css";
 

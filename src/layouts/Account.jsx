@@ -58,7 +58,7 @@ export default function Account() {
           <li>
             <NavLink to="wishlist" state={{ isSideCollapse: isSideCollapse }}>
               <MdFavorite className={style.icon} />
-              Wishlist
+              Produk Saya
             </NavLink>
           </li>
           <li>

@@ -61,25 +61,20 @@ export default function Profile() {
   const genders = ['Laki-laki', 'Perempuan'].map(gender => {
     return (
       <div>
-        <input type="radio" />
+        <input name="gender" value={gender} type="radio" />
         <span htmlFor="">{gender}</span>
       </div>
     )
   })
   return (
     <main className={style.container}>
-      <header>
+      <section className={style.header}>
         <h1>Pofile Saya</h1>
         <p>Kelola informasi Anda untuk mengontrol, melindungi, dan mengamankan akun</p>
         <hr />
-      </header>
-      <section className={style.form}>
-        <div className={style.avatar}>
-          <img className={style.gambar} src="E:\Semester 4 Informatika\Pemrograman WEB\fix_fp\MarkeTani_web\public\user.png" />
-          <input className={style.file} type="file" placeholder="Pilih File" />
-          <p>Ukuran Gambar maks 1 MB</p>
-          <p>Format Gambar : JPEG, PNG</p>
-        </div>
+      </section>
+      <form className={style.form}>
+        {/* profile input */}
         <div>
           {inputs}
           <div className={style.options}>
@@ -94,24 +89,20 @@ export default function Profile() {
               {option}
             </div>
           </div>
+      <div className={style.btn}>
+        <button className={style.btnSubmit} type="submit">Apply</button>
+      </div>
         </div>
-      </section>
-      <section>
-      </section>
-      <section className={style.btnSubmit}>
-        <button>Cancel</button>
-        <button>Submit</button>
-      </section>
+        {/* bagian avatar */}
+        <div className={style.avatar}>
+          <img className={style.gambar}/>
+          <input className={style.file} type="file" />
+          <p>Ukuran Gambar maks 1 MB</p>
+          <p>Format Gambar : JPEG, PNG</p>
+        </div>
+        {/* bagian avatar */}
+      </form>
       {/* end bagian profil */}
-
-      {/* bagian avatar */}
-      {/* <div className={style.avatar}>
-        <img className={style.gambar}  src="E:\Semester 4 Informatika\Pemrograman WEB\fix_fp\MarkeTani_web\public\user.png"/>
-        <input className={style.file} type="file" placeholder="Pilih File" />
-        <p>Ukuran Gambar maks 1 MB</p>
-        <p>Format Gambar : JPEG, PNG</p>
-      </div> */}
-      {/* end bagian avatar */}
     </main>
 
   );

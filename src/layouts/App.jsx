@@ -31,7 +31,8 @@ export default function App() {
   // const { user } = useLoaderData();
 
   return (
-    <>
+    <div className={style.container}>
+
       <header className={style.header}>
         <Link to="/">
           <Brand href="" extendedClass={style.extendedBrand} />
@@ -59,6 +60,6 @@ export default function App() {
       <Outlet
       // context={{ user }}
       />
-    </>
+    </div>
   );
 }

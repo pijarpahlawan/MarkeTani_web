@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    flex-direction: row-reverse;
+    /* margin-left: ; */
+}
+
+.container img {
+    border-radius: 10px;
+    width: 250px;
+    height: 200px;
+}
+
+.category {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+/* Media queries untuk tampilan responsif */
+
+/* Ubah tata letak kontainer saat lebar layar kurang dari 600px */
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .container img {
+        margin: 10px;
+    }
+
+    .category {
+        flex-direction: column;
+    }
+}
+
+/* Ubah ukuran gambar saat lebar layar kurang dari 400px */
+@media (max-width: 400px) {
+    .container img {
+        width: 100%;
+        height: auto;
+    }
+}
