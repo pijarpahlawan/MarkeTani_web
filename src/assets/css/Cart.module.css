@@ -1,9 +1,16 @@
+.body{
+  display: flex;
+  flex-direction: row;
+}
 .cart {
   display: flex;
+  flex-direction: column;
   position: relative;
   align-items: flex-start;
   justify-content: flex-start;
-  margin-left: 1rem;
+  margin-left: 2rem;
+  margin-top: 3rem;
+  margin-right: 0px;
 }
 .items {
   display: flex;
@@ -12,3 +19,101 @@
   gap: 1rem;
   width: 100%;
 }
+.delivery{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-right: 90px;
+  width: 40%;
+  background-color: rgb(var(--white-color-rgb));
+  border: 2px solid rgba(174, 171, 171, 0.556);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(97, 94, 94, 0.5);
+}
+.head{
+  background-color: rgb(var(--dark-green-color-rgb));
+  border-radius: 10px;
+  color: aliceblue;
+  width: 100%;
+}
+.courier{
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  font-weight: bold;
+  width: 100%;
+}
+.courier .option{
+  margin-top: 20px;
+  margin-left: 10px;
+  font-size: 0.8em;
+  font-weight: normal;
+}
+.kurir{
+  margin: 10px 0;
+}
+.subHarga{
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0px;
+}
+.subHarga .keterangan{
+  display: flex;
+  flex-direction: row;
+}
+.subHarga .keterangan img{
+  background-image: url('E:\Semester 4 Informatika\Pemrograman WEB\fix_fp\MarkeTani_web\public\price.png');
+  background-size: cover;
+  border-radius: 100%;
+  border: 1px solid rgb(var(--white-color-rgb));
+  margin: 0px 20px 0px 0px;
+  width: 20px;
+  height: 20px;
+}
+button{
+  position: relative;
+  align-self: center;
+  color: aliceblue;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: rgb(var(--dark-green-color-rgb));
+  
+}
+h1{
+  font-size: 1.3rem;
+}
+label{
+  font-size: 1em;
+}
+/* @media screen and (min-width: 368px) {
+  .body{
+    flex-direction: column-reverse;
+  }
+  .delivery{
+    width: 90%;
+    margin-bottom: 30px;
+  }
+}
+@media screen and (min-width: 700px) {
+  body{
+    display: flex;
+    flex-direction: row;
+  }
+} */
+
+/* @media screen and (min-width: 760px) {
+  .body {
+    margin-right: 90px;
+    flex-direction: column-reverse;
+  }
+  .delivery{
+    margin-bottom: 40px;
+    width: 86%;
+  }
+} */
+
+
+

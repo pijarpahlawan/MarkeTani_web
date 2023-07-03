@@ -5,6 +5,7 @@
   color: rgb(var(--black-color-rgb));
   align-items: center;
   width: 100vw;
+  border-bottom: 2px solid rgba(174, 171, 171, 0.556);
 }
 .header a {
   text-decoration: none;

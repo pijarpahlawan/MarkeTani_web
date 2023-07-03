@@ -2,9 +2,12 @@
     margin: 60px auto;
     /* padding: 50px; */
     border-radius: 10px;
-    background: #dad5d5;
+    background-color: rgb(var(--white-color-rgb));
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
+    border: 2px solid rgba(174, 171, 171, 0.556);
+    box-shadow: 0 0 20px rgba(97, 94, 94, 0.5);
 }
 /* header seting */
 .container h1{
@@ -75,6 +78,15 @@
     height: 150px;
     border-radius: 100%;
 }
+.image{
+    background-image: url('E:\Semester 4 Informatika\Pemrograman WEB\fix_fp\MarkeTani_web\public\security.png');
+    background-size: cover;
+    margin: 0px auto ;
+    width: 300px;
+    height: 300px;
+    border-radius: 100px;
+    border: 3px solid rgb(var(--white-color-rgb));
+}
 .avatar .file{
     margin:  auto auto auto 70px ;
     height: 25px;
@@ -86,7 +98,7 @@
 /* end css milik avatar */
 
 /* media query */
-@media only screen and (min-width:480px ) {
+@media only screen and (min-width:368px ) {
 
     .form{
         display: flex;

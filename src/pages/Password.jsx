@@ -8,6 +8,7 @@ export default function Password() {
         <p>Lindung privasi Anda dengan menambah pasword yang unik</p>
         <hr />
       </div>
+          <img className={style.image}/>
       <div className={style.header}>
       <LabeledInput extendedClass={style.input} input={{
         id: "oldPswd",

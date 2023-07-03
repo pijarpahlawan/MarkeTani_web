@@ -1,7 +1,9 @@
 .item {
   display: flex;
   gap: 1rem;
-  border: 2px solid rgb(var(--gray-color-rgb));
+  background-color: rgb(var(--white-color-rgb));
+  border: 1px solid rgba(174, 171, 171, 0.556);
+  box-shadow: 0 0 10px rgba(97, 94, 94, 0.5);
   border-radius: 5px;
   height: fit-content;
   padding: 1rem;
