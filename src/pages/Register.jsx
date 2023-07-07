@@ -7,7 +7,6 @@ import {
   useNavigation,
 } from "react-router-dom";
 import { register } from "../api";
-import LabeledInput from "../components/LabeledInput";
 import ErrorPopup from "../components/ErrorPopup";
 import style from "../assets/css/Register.module.css";
 
@@ -71,7 +70,19 @@ export default function Register() {
       placeholder: "Masukkan ulang password",
       required: true,
     },
-  ].map((input) => <LabeledInput key={input.id} input={input} />);
+  ].map((input) => (
+    <div className={`${style.input}`} key={input.id}>
+      <label htmlFor={input.id}>{input.label}</label>
+      <input
+        type={input.type}
+        id={input.id}
+        name={input.name}
+        defaultValue={input.defaultValue}
+        placeholder={input.placeholder}
+        required={input.requried}
+      />
+    </div>
+  ));
 
   return (
     <div className={style.register}>

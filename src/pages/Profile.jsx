@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 import { Form, redirect } from "react-router-dom";
-// import ErrorPopup from "../components/ErrorPopup";
 import style from "../assets/css/Profile.module.css";
 import { useQuery } from "@tanstack/react-query";
 import { province as getProvinces, updateProfile } from "../api";
@@ -263,16 +262,21 @@ export default function Profile() {
           </div>
         </div>
         {/* bagian avatar */}
-        <img className={style.gambar} src={user.avatarUrl || placeholderUser} />
-        {editMode ? (
-          <div className={style.avatar}>
-            <input className={style.file} name="avatar" type="file" />
-            <p>Ukuran Gambar maks 1 MB</p>
-            <p>Format Gambar : JPEG, PNG</p>
-          </div>
-        ) : (
-          <></>
-        )}
+        <div className={style.avatar}>
+          <img
+            className={style.gambar}
+            src={user.avatarUrl || placeholderUser}
+          />
+          {editMode ? (
+            <>
+              <input className={style.file} name="avatar" type="file" />
+              <p>Ukuran Gambar maks 1 MB</p>
+              <p>Format Gambar : JPEG, PNG</p>
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
         {/* bagian avatar */}
       </Form>
       {/* end bagian profil */}
