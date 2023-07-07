@@ -55,7 +55,7 @@ export default function Login() {
       placeholder: "*******",
       required: true,
     },
-  ];
+  ].map((input) => <LabeledInput key={input.id} input={input} />);
 
   return (
     <div className={style.login}>
@@ -64,7 +64,7 @@ export default function Login() {
       )}
       <h1>Log In</h1>
       <Form id="login-form" method="post" className={style.form}>
-        <LabeledInputs inputArray={inputs} />
+        {inputs}
         <button type="submit">
           {navigation.state === "submitting"
             ? "Submitting..."

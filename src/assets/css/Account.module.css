@@ -4,9 +4,7 @@
   flex-direction: row;
   margin-left: 0px;
   background-color: rgb(235, 234, 231);
-  /* background-color: rgb(var(--white-color-rgb)); */
   transition: margin-left 0.5s ease-in-out;
-  /* transform: translateX(300px); */
 }
 .inactive {
   margin-left: -290px;
@@ -25,7 +23,7 @@
   font-size: 2rem;
   margin: 110px 0px 0px -45px;
 }
-.sideIcon:hover{
+.sideIcon:hover {
   background-color: rgb(var(--green-color-rgb));
   border-radius: 50px;
 }
@@ -72,7 +70,7 @@
   list-style: none;
   padding: 0;
   margin: 3rem 5rem;
-  width: 15rem;
+  width: 13rem;
 }
 .sidebar .primaryMenus li a {
   color: rgb(var(--black-color-rgb));
@@ -103,4 +101,3 @@
     margin-left: -290px;
   }
 }
-

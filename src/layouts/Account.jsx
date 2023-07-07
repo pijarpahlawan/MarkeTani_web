@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  Outlet,
-  // useOutletContext,
-  NavLink,
-  Link,
-} from "react-router-dom";
+import { Outlet, useOutletContext, NavLink, Link } from "react-router-dom";
 import { FaUser, FaCartArrowDown, FaHistory } from "react-icons/fa";
 import { MdFavorite } from "react-icons/md";
 import { HiChevronDoubleRight } from "react-icons/hi";
@@ -12,7 +7,7 @@ import { logout } from "../api";
 import style from "../assets/css/Account.module.css";
 
 export default function Account() {
-  // const { user } = useOutletContext();
+  const { user } = useOutletContext();
   const [isSideCollapse, setIsSideCollapse] = useState(false);
 
   const handleLogout = async () => {
@@ -26,16 +21,13 @@ export default function Account() {
       <aside className={style.sidebar}>
         <ul className={style.primaryMenus}>
           <li>
-            <NavLink to="profile" state={{ isSideCollapse: isSideCollapse }}>
+            <NavLink to="" state={{ isSideCollapse: isSideCollapse }}>
               <FaUser className={style.icon} />
               Akun Saya
             </NavLink>
             <ul>
               <li>
-                <NavLink
-                  to="profile"
-                  state={{ isSideCollapse: isSideCollapse }}
-                >
+                <NavLink to="" state={{ isSideCollapse: isSideCollapse }}>
                   Profil
                 </NavLink>
               </li>
@@ -79,9 +71,7 @@ export default function Account() {
       >
         <HiChevronDoubleRight className={style.sideIcon} />
       </span>
-      <Outlet
-      // context={{ user }}
-      />
+      <Outlet context={{ user }} />
     </main>
   );
 }
