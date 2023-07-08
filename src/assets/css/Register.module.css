@@ -37,9 +37,39 @@
   padding: 0.5rem;
   width: 100%;
 }
+
 .register .form button:hover {
   background-color: rgb(var(--yellow-color-rgb));
   color: rgb(var(--black-color-rgb));
+}
+
+.register .form .input {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: rgb(var(--white-color-rgb));
+  color: rgb(var(--black-color-rgb));
+  font-size: 1rem;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.register .form .input label {
+  font-weight: 700;
+}
+
+.register .form .input input {
+  outline-color: rgb(var(--dark-green-color-rgb));
+  border: 1px solid rgb(var(--gray-color-rgb));
+  border-radius: 5px;
+  color: rgb(var(--black-color-rgb));
+  background-color: rgb(var(--white-color-rgb));
+  font-weight: 400;
+  padding: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .register p {

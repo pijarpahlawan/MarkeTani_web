@@ -1,4 +1,4 @@
-.body{
+/* .body{
   display: flex;
   flex-direction: row;
 }
@@ -87,7 +87,7 @@ h1{
 }
 label{
   font-size: 1em;
-}
+} */
 /* @media screen and (min-width: 368px) {
   .body{
     flex-direction: column-reverse;
@@ -114,6 +114,3 @@ label{
     width: 86%;
   }
 } */
-
-
-

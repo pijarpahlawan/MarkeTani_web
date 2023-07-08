@@ -6,14 +6,9 @@ import {
   useActionData,
   useNavigation,
 } from "react-router-dom";
-// import { useQuery } from "@tanstack/react-query";
-// import { getProvinces } from "../api/province";
-// import { getCities } from "../api/city";
 import { register } from "../api";
-import LabeledInput from "../components/LabeledInput";
 import ErrorPopup from "../components/ErrorPopup";
 import style from "../assets/css/Register.module.css";
-// import LabeledSelect from "../components/LabeledSelect";
 
 export const action =
   (queryClient) =>
@@ -41,30 +36,6 @@ export default function Register() {
     document.getElementById("registration-form").reset();
     setError(errorMessage);
   }, [errorMessage, navigation.state]);
-
-  // const { data: provinceQueryData, status: provinceQueryStatus } = useQuery({
-  //   queryKey: ["provinces", "list", "all"],
-  //   queryFn: () => getProvinces().then((res) => res.body),
-  // });
-
-  // const provinceOptions =
-  //   provinceQueryStatus === "loading"
-  //     ? [{ id: 0, value: "Please wait..." }]
-  //     : [
-  //         { id: 0, value: "Pilih kota" },
-  //         ...provinceQueryData.map((province) => {
-  //           return { id: province.province_id, value: province.province };
-  //         }),
-  //       ];
-
-  // const provinceSelect = {
-  //   id: "province-select",
-  //   name: "provinsi",
-  //   label: "Provinsi",
-  //   options: provinceOptions,
-  // };
-
-  // console.log(provinces);
 
   const inputs = [
     {
@@ -99,7 +70,19 @@ export default function Register() {
       placeholder: "Masukkan ulang password",
       required: true,
     },
-  ];
+  ].map((input) => (
+    <div className={`${style.input}`} key={input.id}>
+      <label htmlFor={input.id}>{input.label}</label>
+      <input
+        type={input.type}
+        id={input.id}
+        name={input.name}
+        defaultValue={input.defaultValue}
+        placeholder={input.placeholder}
+        required={input.requried}
+      />
+    </div>
+  ));
 
   return (
     <div className={style.register}>
@@ -108,7 +91,7 @@ export default function Register() {
       )}
       <h1>Registrasi</h1>
       <Form id="registration-form" method="post" className={style.form}>
-        <LabeledInputs inputArray={inputs} />
+        {inputs}
         <button type="submit">
           {navigation.state === "submitting"
             ? "Submitting..."
@@ -120,7 +103,6 @@ export default function Register() {
       <p>
         Sudah memiliki akun? <Link to="/login">Login</Link>
       </p>
-      {/* <LabeledSelect select={provinceSelect} /> */}
     </div>
   );
 }

@@ -7,16 +7,13 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import App from // { loader as appLoader }
-"./layouts/App";
+import App, { loader as appLoader } from "./layouts/App";
 import Authentication from "./layouts/Authentication";
 import Account from "./layouts/Account";
 import Intro from "./pages/Intro";
-import Register from // { action as registerAction }
-"./pages/Register";
-import Login from //  { action as loginAction }
-"./pages/Login";
-import Profile from "./pages/Profile";
+import Register, { action as registerAction } from "./pages/Register";
+import Login, { action as loginAction } from "./pages/Login";
+import Profile, { action as updateProfile } from "./pages/Profile";
 import Password from "./pages/Password";
 import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
@@ -30,14 +27,14 @@ const queryClient = new QueryClient({});
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route
-        path="/"
-        // loader={appLoader(queryClient)}
-        element={<App />}
-      >
+      <Route path="/" loader={appLoader(queryClient)} element={<App />}>
         <Route index element={<Home />} />
         <Route path="account" element={<Account />}>
-          <Route path="profile" element={<Profile />} />
+          <Route
+            index
+            action={updateProfile(queryClient)}
+            element={<Profile />}
+          />
           <Route path="password" element={<Password />} />
           <Route path="cart" element={<Cart />} />
           <Route path="wishlist" element={<Wishlist />} />
@@ -48,12 +45,12 @@ const router = createBrowserRouter(
       <Route element={<Authentication />}>
         <Route
           path="/register"
-          // action={registerAction(queryClient)}
+          action={registerAction(queryClient)}
           element={<Register />}
         />
         <Route
           path="/login"
-          // action={loginAction(queryClient)}
+          action={loginAction(queryClient)}
           element={<Login />}
         />
       </Route>
