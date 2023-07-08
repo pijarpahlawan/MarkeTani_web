@@ -40,3 +40,18 @@
         height: auto;
     }
 }
+
+/* style untuk iklan */
+.body{
+    display: flex;
+    flex-direction: column;
+}
+.atas{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+.body .atas .kiri{
+    display: flex;
+    flex-direction: column;
+}
